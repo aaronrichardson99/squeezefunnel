@@ -125,9 +125,14 @@
   background: linear-gradient(180deg, transparent 62%, rgba(15, 23, 42, 0.12) 62%);
 }
 
-/* Reveal-on-scroll */
-.ff-reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
-.ff-reveal.is-visible { opacity: 1; transform: translateY(0); }
+/* Reveal-on-scroll — visible by default. Content only gets hidden-then-
+   faded-in if the "ff-js" class below is present, which the JS sets the
+   instant it successfully runs. This means if the script ever fails to
+   load (e.g. a page builder strips <script> tags), every section still
+   shows in full instead of staying invisible forever. */
+.ff-reveal { transition: opacity .8s var(--ease), transform .8s var(--ease); }
+html.ff-js .ff-reveal { opacity: 0; transform: translateY(28px); }
+html.ff-js .ff-reveal.is-visible { opacity: 1; transform: translateY(0); }
 
 /* Floating background blobs (decorative depth) */
 .ff-blob {
