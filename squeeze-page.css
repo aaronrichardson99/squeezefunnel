@@ -1,5 +1,30 @@
+/* ============================================================================
+   FITNESSFORGE SQUEEZE PAGE — CUSTOM CSS
+   ============================================================================
+   Paste this ENTIRE file, once, into GoHighLevel's Custom CSS field. It
+   styles every one of the 11 HTML blocks (01-header.html … 11-javascript.html)
+   from the ghl-sections/ folder — do not split this file itself, since the
+   sections below share variables, resets and components.
+
+   MAP OF WHICH PART OF THIS FILE STYLES WHICH HTML BLOCK:
+     Parts 1–4 (Reset, Layout Utilities, Buttons, Email Form) are SHARED
+       foundations used by more than one HTML block — skip pasting these
+       and things like buttons, spacing and colors break everywhere.
+     Part 5   → 01-header.html        (logo)
+     Part 6   → 02-hero.html          (headline, book mockup, first form)
+     Part 7   → 03-social-proof.html  (testimonial marquee)
+     Part 8   → 04-benefits.html      (6 benefit cards)
+     Part 9   → 05-stats.html         (animated stat counters)
+     Part 10  → 06-whats-inside.html  (checklist + mini page preview)
+     Part 11  → 07-about.html         (about FitnessForge)
+     Part 12  → 08-faq.html           (FAQ accordion)
+     Part 13  → 09-final-cta.html     (closing headline + second form)
+     Part 14  → 10-footer.html        (footer)
+     (11-javascript.html needs no CSS — it's the animation/form logic.)
+   ============================================================================ */
+
 /* ==========================================================================
-   1. RESET & BASE
+   1. RESET & BASE — shared by every section
    ========================================================================== */
 .ff-page, .ff-page *, .ff-page *::before, .ff-page *::after {
   margin: 0;
@@ -64,7 +89,8 @@
 }
 
 /* ==========================================================================
-   2. LAYOUT UTILITIES
+   2. LAYOUT UTILITIES — shared: container, eyebrow pill, section spacing,
+      scroll-reveal animation, floating blobs (used across most sections)
    ========================================================================== */
 .ff-container {
   width: 100%;
@@ -119,7 +145,7 @@
 }
 
 /* ==========================================================================
-   3. BUTTONS
+   3. BUTTONS — shared by 02-hero.html and 09-final-cta.html
    ========================================================================== */
 .ff-btn {
   position: relative;
@@ -175,7 +201,7 @@
 @keyframes ff-spin { to { transform: rotate(360deg); } }
 
 /* ==========================================================================
-   4. EMAIL CAPTURE FORM
+   4. EMAIL CAPTURE FORM — shared by 02-hero.html and 09-final-cta.html
    ========================================================================== */
 .ff-form-wrap { width: 100%; max-width: 480px; }
 .ff-form {
@@ -253,7 +279,7 @@
 @keyframes ff-pop { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
 
 /* ==========================================================================
-   5. HEADER
+   5. HEADER → styles 01-header.html
    ========================================================================== */
 .ff-header {
   position: relative;
@@ -272,7 +298,7 @@
 }
 
 /* ==========================================================================
-   6. HERO SECTION
+   6. HERO SECTION → styles 02-hero.html
    ========================================================================== */
 .ff-hero { padding: 40px 0 100px; overflow: hidden; }
 .ff-hero .ff-blob-1 { width: 480px; height: 480px; background: var(--navy); top: -180px; left: -160px; }
@@ -420,7 +446,7 @@
 }
 
 /* ==========================================================================
-   7. TESTIMONIAL MARQUEE
+   7. TESTIMONIAL MARQUEE → styles 03-social-proof.html
    ========================================================================== */
 .ff-marquee-section { padding: 72px 0; background: var(--grey-50); border-top: 1px solid var(--grey-200); border-bottom: 1px solid var(--grey-200); }
 .ff-marquee-head { text-align: center; margin-bottom: 40px; }
@@ -460,7 +486,7 @@
 .ff-review-person span { font-size: 12.5px; color: var(--grey-500); }
 
 /* ==========================================================================
-   8. BENEFITS SECTION
+   8. BENEFITS SECTION → styles 04-benefits.html
    ========================================================================== */
 .ff-benefits-grid {
   display: grid;
@@ -500,7 +526,7 @@
 .ff-benefit-card p { font-size: 15px; color: var(--grey-500); }
 
 /* ==========================================================================
-   9. ANIMATED STATISTICS
+   9. ANIMATED STATISTICS → styles 05-stats.html
    ========================================================================== */
 .ff-stats-section {
   background: linear-gradient(180deg, var(--navy) 0%, #111c34 100%);
@@ -529,7 +555,7 @@
 .ff-stat-label { font-size: 14px; color: rgba(255,255,255,0.6); font-weight: 500; }
 
 /* ==========================================================================
-   10. WHAT'S INSIDE
+   10. WHAT'S INSIDE → styles 06-whats-inside.html
    ========================================================================== */
 .ff-inside-grid {
   display: grid;
@@ -579,7 +605,7 @@
 .ff-mini-line:last-child { margin-bottom: 0; }
 
 /* ==========================================================================
-   11. ABOUT
+   11. ABOUT → styles 07-about.html
    ========================================================================== */
 .ff-about { background: var(--grey-50); }
 .ff-about-inner { max-width: 760px; margin: 0 auto; text-align: center; }
@@ -606,7 +632,7 @@
 }
 
 /* ==========================================================================
-   12. FAQ ACCORDION
+   12. FAQ ACCORDION → styles 08-faq.html
    ========================================================================== */
 .ff-faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
 .ff-faq-item {
@@ -656,7 +682,7 @@
 .ff-faq-answer-inner p { padding: 0 24px 22px; color: var(--grey-500); font-size: 15px; line-height: 1.7; }
 
 /* ==========================================================================
-   13. FINAL CTA
+   13. FINAL CTA → styles 09-final-cta.html
    ========================================================================== */
 .ff-final-cta {
   background: radial-gradient(120% 140% at 50% 0%, #1e293b 0%, var(--navy) 55%, #0b1222 100%);
@@ -673,7 +699,7 @@
 .ff-final-cta .ff-form-note { justify-content: center; }
 
 /* ==========================================================================
-   14. FOOTER
+   14. FOOTER → styles 10-footer.html
    ========================================================================== */
 .ff-footer { padding: 48px 0 40px; text-align: center; }
 .ff-footer .ff-logo { justify-content: center; margin-bottom: 12px; }
