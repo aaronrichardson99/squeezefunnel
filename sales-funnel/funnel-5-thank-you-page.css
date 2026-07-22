@@ -1,0 +1,84 @@
+/* ============================================================================
+   FITNESSFORGE — ORDER CONFIRMATION / THANK YOU PAGE
+   ============================================================================
+   Paste into THIS page's Custom CSS field. This is the POST-PURCHASE
+   thank you page (different from the free lead-magnet's thank-you-page.css
+   built earlier in this project) — matches the sales funnel's visual
+   system (Manrope display type, rectangular buttons, navy/black/white).
+   ============================================================================ */
+
+.ff-page, .ff-page *, .ff-page *::before, .ff-page *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+.ff-page {
+  --white: #ffffff; --navy: #0f172a; --navy-2: #1e293b; --navy-3: #334155; --black: #05070d;
+  --grey-50: #f8fafc; --grey-100: #f1f5f9; --grey-200: #e2e8f0; --grey-300: #cbd5e1; --grey-400: #94a3b8; --grey-500: #64748b;
+  --success: #16a34a;
+  --shadow-sm: 0 2px 8px rgba(5,7,13,0.06); --shadow-md: 0 12px 28px rgba(5,7,13,0.10); --shadow-lg: 0 24px 56px rgba(5,7,13,0.16);
+  --radius-btn: 12px; --radius-md: 20px; --radius-lg: 28px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--navy); background: #fff; line-height: 1.6; overflow-x: hidden;
+}
+.ff-page :where(h1, h2, h3, h4) { font-family: 'Manrope', 'Inter', sans-serif; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; color: var(--navy); }
+.ff-page :where(button) { font-family: inherit; cursor: pointer; border: none; background: transparent; }
+.ff-page :where(a) { color: inherit; text-decoration: none; }
+.ff-page :where(img) { max-width: 100%; display: block; }
+
+.ff-container { width: 100%; max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+.ff-ty-header { padding: 26px 0; text-align: center; }
+.ff-mh-logo { display: inline-flex; align-items: center; gap: 10px; font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 18px; color: var(--navy); }
+.ff-mh-mark { width: 32px; height: 32px; border-radius: 9px; background: var(--navy); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 13px; font-weight: 800; }
+
+.ff-ty-hero { text-align: center; padding: 30px 0 50px; }
+.ff-ty-badge { width: 84px; height: 84px; border-radius: 50%; background: var(--success); display: flex; align-items: center; justify-content: center; margin: 0 auto 26px; box-shadow: var(--shadow-lg); animation: ff-pop .6s var(--ease); }
+@keyframes ff-pop { from { opacity: 0; transform: scale(.85); } to { opacity: 1; transform: scale(1); } }
+.ff-ty-hero h1 { font-size: clamp(28px, 4.6vw, 44px); margin-bottom: 14px; }
+.ff-ty-hero p { color: var(--grey-500); font-size: clamp(15.5px, 1.8vw, 18px); max-width: 560px; margin: 0 auto; }
+.ff-ty-hero p strong { color: var(--navy); }
+
+/* Purchased items / downloads */
+.ff-ty-downloads { background: var(--grey-50); border: 1px solid var(--grey-200); border-radius: var(--radius-lg); padding: 30px; margin: 10px 0 56px; }
+.ff-ty-downloads h3 { font-size: 15px; margin-bottom: 18px; }
+.ff-ty-download-item { display: flex; align-items: center; gap: 16px; background: #fff; border: 1px solid var(--grey-200); border-radius: var(--radius-md); padding: 18px 20px; margin-bottom: 12px; transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
+.ff-ty-download-item:last-child { margin-bottom: 0; }
+.ff-ty-download-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.ff-ty-download-thumb { flex-shrink: 0; width: 46px; height: 46px; border-radius: 12px; background: linear-gradient(135deg, var(--navy), var(--navy-3)); display: flex; align-items: center; justify-content: center; color: #fff; font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 11px; }
+.ff-ty-download-info { flex: 1; min-width: 0; }
+.ff-ty-download-info h4 { font-size: 15px; margin-bottom: 2px; }
+.ff-ty-download-info span { font-size: 12.5px; color: var(--grey-500); }
+.ff-ty-download-btn { flex-shrink: 0; display: inline-flex; align-items: center; gap: 8px; background: var(--navy); color: #fff; font-size: 13.5px; font-weight: 700; padding: 11px 18px; border-radius: var(--radius-btn); transition: transform .25s var(--ease), box-shadow .25s var(--ease); }
+.ff-ty-download-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(15,23,42,0.28); }
+@media (max-width: 520px) { .ff-ty-download-item { flex-wrap: wrap; } .ff-ty-download-btn { width: 100%; justify-content: center; } }
+
+/* Video placeholder */
+.ff-ty-video { margin-bottom: 56px; }
+.ff-ty-video h3 { font-size: 15px; margin-bottom: 18px; text-align: center; }
+.ff-ty-video-frame { position: relative; aspect-ratio: 16/9; border-radius: var(--radius-lg); background: linear-gradient(150deg, var(--navy), #1e293b 60%, #334155); display: flex; align-items: center; justify-content: center; overflow: hidden; box-shadow: var(--shadow-lg); }
+.ff-ty-video-frame::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.08), transparent 60%); }
+.ff-ty-play-btn { position: relative; width: 72px; height: 72px; border-radius: 50%; background: rgba(255,255,255,0.14); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; color: #fff; transition: transform .3s var(--ease), background .3s var(--ease); }
+.ff-ty-play-btn:hover { transform: scale(1.08); background: rgba(255,255,255,0.22); }
+.ff-ty-video-label { position: absolute; bottom: 20px; left: 24px; color: rgba(255,255,255,0.7); font-size: 13px; font-weight: 600; }
+
+/* Next steps */
+.ff-ty-section-label { text-align: center; font-size: 13px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--grey-400); margin-bottom: 16px; }
+.ff-ty-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 56px; }
+@media (max-width: 760px) { .ff-ty-steps { grid-template-columns: 1fr; } }
+.ff-ty-step-card { border: 1px solid var(--grey-200); border-radius: var(--radius-md); padding: 26px; transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
+.ff-ty-step-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+.ff-ty-step-num { width: 30px; height: 30px; border-radius: 50%; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; margin-bottom: 14px; }
+.ff-ty-step-card h4 { font-size: 15.5px; margin-bottom: 6px; }
+.ff-ty-step-card p { font-size: 13.5px; color: var(--grey-500); }
+
+/* Community + social */
+.ff-ty-community { background: var(--navy); border-radius: var(--radius-lg); padding: 44px; text-align: center; margin-bottom: 56px; }
+.ff-ty-community h2 { color: #fff; font-size: clamp(22px, 3vw, 30px); margin-bottom: 12px; }
+.ff-ty-community p { color: rgba(255,255,255,0.62); font-size: 15.5px; max-width: 480px; margin: 0 auto 26px; }
+.ff-ty-social-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+.ff-ty-social-btn { display: inline-flex; align-items: center; gap: 9px; background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; font-weight: 700; padding: 12px 20px; border-radius: var(--radius-btn); transition: transform .25s var(--ease), background .25s var(--ease); }
+.ff-ty-social-btn:hover { transform: translateY(-3px); background: rgba(255,255,255,0.18); }
+
+.ff-ty-footer { text-align: center; padding: 0 0 60px; color: var(--grey-400); font-size: 13px; }
+.ff-ty-footer .ff-mh-logo { color: var(--navy); margin-bottom: 10px; }

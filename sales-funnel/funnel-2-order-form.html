@@ -1,0 +1,209 @@
+<!-- ============================================================================
+     FITNESSFORGE — 2-STEP ORDER FORM
+     ============================================================================
+     Pairs with funnel-2-order-form.css. Paste this whole file into ONE
+     Custom Code element on the page.
+
+     WHAT THIS PAGE DOES
+     ----------------------------------------------------------------------------
+     Step 1 collects just an email (low friction). Step 2 collects first
+     name, last name and an optional phone number. NO payment fields are
+     on this page at all, per the brief — clicking Continue on Step 2
+     saves everything to the browser's localStorage (so the Upsell and
+     Checkout pages can read it back to pre-fill fields and build the
+     order summary) and sends the visitor to the Upsell page.
+
+     CONFIGURE THIS
+     ----------------------------------------------------------------------------
+     Set CONFIG.UPSELL_URL in the <script> tag below to your Upsell page's
+     URL before publishing.
+     ============================================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<div class="ff-page">
+  <header class="ff-of-header">
+    <div class="ff-container ff-of-header-inner">
+      <div class="ff-mh-logo"><span class="ff-mh-mark">FF</span>FitnessForge</div>
+      <div class="ff-of-secure"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Secure Form</div>
+    </div>
+  </header>
+
+  <div class="ff-container ff-of-layout">
+    <!-- Form -->
+    <div class="ff-of-card">
+      <div class="ff-of-progress">
+        <div class="ff-of-progress-step is-active" id="ff-of-step-indicator-1"><span class="ff-of-progress-dot">1</span>Your Email</div>
+        <div class="ff-of-progress-line" id="ff-of-progress-line"></div>
+        <div class="ff-of-progress-step" id="ff-of-step-indicator-2"><span class="ff-of-progress-dot">2</span>Your Details</div>
+      </div>
+
+      <!-- Step 1: Email -->
+      <div class="ff-of-step is-active" id="ff-of-step-1">
+        <h1>Let's Get Started</h1>
+        <p class="ff-of-sub">Enter your email to begin — you won't be charged on this step.</p>
+        <div class="ff-field">
+          <label for="ff-of-email">Email Address</label>
+          <input type="email" id="ff-of-email" placeholder="you@example.com" required>
+          <p class="ff-field-error" id="ff-of-email-error">Please enter a valid email address.</p>
+        </div>
+        <button type="button" class="ff-btn ff-btn-primary" id="ff-of-step1-continue">
+          Continue
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <div class="ff-of-trust">
+          <div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>No payment required yet</div>
+          <div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Takes under 30 seconds</div>
+        </div>
+      </div>
+
+      <!-- Step 2: Name + phone -->
+      <div class="ff-of-step" id="ff-of-step-2">
+        <h1>Almost There</h1>
+        <p class="ff-of-sub">Just a few more details so we know who's joining.</p>
+        <div class="ff-field-row">
+          <div class="ff-field">
+            <label for="ff-of-first-name">First Name</label>
+            <input type="text" id="ff-of-first-name" placeholder="Jamie" required>
+            <p class="ff-field-error" id="ff-of-first-name-error">Please enter your first name.</p>
+          </div>
+          <div class="ff-field">
+            <label for="ff-of-last-name">Last Name</label>
+            <input type="text" id="ff-of-last-name" placeholder="Smith" required>
+            <p class="ff-field-error" id="ff-of-last-name-error">Please enter your last name.</p>
+          </div>
+        </div>
+        <div class="ff-field">
+          <label for="ff-of-phone">Phone Number <span class="optional">(optional)</span></label>
+          <input type="tel" id="ff-of-phone" placeholder="07123 456789">
+        </div>
+        <button type="button" class="ff-btn ff-btn-primary" id="ff-of-step2-continue">
+          Continue To Next Step
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <button type="button" class="ff-back-link" id="ff-of-back-to-step1">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          Back
+        </button>
+      </div>
+    </div>
+
+    <!-- Order summary -->
+    <div class="ff-of-summary" aria-hidden="true">
+      <div class="ff-of-summary-label">Order Summary</div>
+      <div class="ff-of-product">
+        <div class="ff-of-product-thumb">FF</div>
+        <div class="ff-of-product-info"><h4>The Physique Builder Blueprint</h4><span>12-week digital programme</span></div>
+      </div>
+      <div class="ff-of-row"><span>Subtotal</span><span>£49.99</span></div>
+      <div class="ff-of-total"><span>Total Due Today</span><strong>£49.99</strong></div>
+      <p class="ff-of-summary-note">You won't be asked for payment until the final checkout step. Your card details are never collected here.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* CONFIG — set this to your Upsell page's URL */
+  var CONFIG = { UPSELL_URL: "#" };
+
+  var STORAGE_KEY = "ff_order";
+
+  function getOrder() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+    catch (e) { return {}; }
+  }
+  function saveOrder(data) {
+    var current = getOrder();
+    var merged = Object.assign(current, data);
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(merged)); } catch (e) {}
+  }
+
+  function isValidEmail(value) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value); }
+
+  var step1 = document.getElementById("ff-of-step-1");
+  var step2 = document.getElementById("ff-of-step-2");
+  var indicator1 = document.getElementById("ff-of-step-indicator-1");
+  var indicator2 = document.getElementById("ff-of-step-indicator-2");
+  var progressLine = document.getElementById("ff-of-progress-line");
+
+  function goToStep2() {
+    step1.classList.remove("is-active");
+    step2.classList.add("is-active");
+    indicator1.classList.add("is-done");
+    indicator2.classList.add("is-active");
+    progressLine.classList.add("is-filled");
+    document.getElementById("ff-of-first-name").focus();
+  }
+  function goToStep1() {
+    step2.classList.remove("is-active");
+    step1.classList.add("is-active");
+    indicator2.classList.remove("is-active");
+    progressLine.classList.remove("is-filled");
+  }
+
+  document.getElementById("ff-of-step1-continue").addEventListener("click", function () {
+    var emailInput = document.getElementById("ff-of-email");
+    var emailError = document.getElementById("ff-of-email-error");
+    var email = emailInput.value.trim();
+
+    if (!isValidEmail(email)) {
+      emailInput.classList.add("has-error");
+      emailError.classList.add("is-visible");
+      emailInput.focus();
+      return;
+    }
+    emailInput.classList.remove("has-error");
+    emailError.classList.remove("is-visible");
+    saveOrder({ email: email });
+    goToStep2();
+  });
+
+  document.getElementById("ff-of-back-to-step1").addEventListener("click", goToStep1);
+
+  document.getElementById("ff-of-step2-continue").addEventListener("click", function () {
+    var firstInput = document.getElementById("ff-of-first-name");
+    var lastInput = document.getElementById("ff-of-last-name");
+    var phoneInput = document.getElementById("ff-of-phone");
+    var firstError = document.getElementById("ff-of-first-name-error");
+    var lastError = document.getElementById("ff-of-last-name-error");
+
+    var first = firstInput.value.trim();
+    var last = lastInput.value.trim();
+    var valid = true;
+
+    if (!first) { firstInput.classList.add("has-error"); firstError.classList.add("is-visible"); valid = false; }
+    else { firstInput.classList.remove("has-error"); firstError.classList.remove("is-visible"); }
+
+    if (!last) { lastInput.classList.add("has-error"); lastError.classList.add("is-visible"); valid = false; }
+    else { lastInput.classList.remove("has-error"); lastError.classList.remove("is-visible"); }
+
+    if (!valid) return;
+
+    saveOrder({ firstName: first, lastName: last, phone: phoneInput.value.trim() });
+
+    window.location.href = CONFIG.UPSELL_URL;
+  });
+
+  /* Allow pressing Enter to advance each step */
+  document.getElementById("ff-of-email").addEventListener("keydown", function (e) {
+    if (e.key === "Enter") { document.getElementById("ff-of-step1-continue").click(); }
+  });
+  ["ff-of-first-name", "ff-of-last-name", "ff-of-phone"].forEach(function (id) {
+    document.getElementById(id).addEventListener("keydown", function (e) {
+      if (e.key === "Enter") { document.getElementById("ff-of-step2-continue").click(); }
+    });
+  });
+
+  /* Pre-fill from any previously saved data (e.g. visitor came back) */
+  var existing = getOrder();
+  if (existing.email) document.getElementById("ff-of-email").value = existing.email;
+  if (existing.firstName) document.getElementById("ff-of-first-name").value = existing.firstName;
+  if (existing.lastName) document.getElementById("ff-of-last-name").value = existing.lastName;
+  if (existing.phone) document.getElementById("ff-of-phone").value = existing.phone;
+
+})();
+</script>

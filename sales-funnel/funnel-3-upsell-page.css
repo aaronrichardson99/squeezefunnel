@@ -1,0 +1,87 @@
+/* ============================================================================
+   FITNESSFORGE — UPSELL PAGE (Nutrition Fundamentals Guide, £9.99)
+   ============================================================================
+   Paste into THIS page's Custom CSS field. Matches the funnel's visual
+   system (Manrope display type, rectangular buttons, navy/black/white).
+   ============================================================================ */
+
+.ff-page, .ff-page *, .ff-page *::before, .ff-page *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+.ff-page {
+  --white: #ffffff; --navy: #0f172a; --navy-2: #1e293b; --navy-3: #334155; --black: #05070d;
+  --grey-50: #f8fafc; --grey-100: #f1f5f9; --grey-200: #e2e8f0; --grey-300: #cbd5e1; --grey-400: #94a3b8; --grey-500: #64748b;
+  --gold: #f59e0b; --success: #16a34a;
+  --shadow-sm: 0 2px 8px rgba(5,7,13,0.06); --shadow-md: 0 12px 28px rgba(5,7,13,0.10); --shadow-lg: 0 24px 56px rgba(5,7,13,0.16); --shadow-xl: 0 40px 90px rgba(5,7,13,0.22);
+  --radius-btn: 12px; --radius-md: 20px; --radius-lg: 28px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--navy); background: #fff; line-height: 1.6; overflow-x: hidden;
+}
+.ff-page :where(h1, h2, h3, h4) { font-family: 'Manrope', 'Inter', sans-serif; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; color: var(--navy); }
+.ff-page :where(button) { font-family: inherit; cursor: pointer; border: none; background: transparent; }
+.ff-page :where(a) { color: inherit; text-decoration: none; }
+.ff-page :where(img) { max-width: 100%; display: block; }
+
+.ff-container { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.ff-up-header { padding: 26px 0; text-align: center; }
+.ff-mh-logo { display: inline-flex; align-items: center; gap: 10px; font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 18px; color: var(--navy); }
+.ff-mh-mark { width: 32px; height: 32px; border-radius: 9px; background: var(--navy); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 13px; font-weight: 800; }
+.ff-up-progress { margin-top: 14px; font-size: 12.5px; font-weight: 700; color: var(--grey-400); letter-spacing: .06em; text-transform: uppercase; }
+
+.ff-up-hero { padding: 30px 0 70px; }
+.ff-up-label { display: inline-flex; align-items: center; gap: 8px; background: rgba(245,158,11,0.12); color: #b45309; font-size: 12.5px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: 8px 16px; border-radius: 999px; margin-bottom: 22px; }
+.ff-up-hero-inner { text-align: center; max-width: 720px; margin: 0 auto; }
+.ff-up-hero h1 { font-size: clamp(28px, 4.6vw, 46px); margin-bottom: 18px; }
+.ff-up-hero .lede { font-size: clamp(16px, 1.8vw, 19px); color: var(--grey-500); }
+
+.ff-up-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: center; padding: 20px 0 60px; }
+@media (max-width: 900px) { .ff-up-grid { grid-template-columns: 1fr; } }
+.ff-up-grid > * { min-width: 0; }
+
+/* Product visual */
+.ff-up-visual { display: flex; justify-content: center; }
+.ff-up-mockup { width: 300px; aspect-ratio: 3/4; border-radius: var(--radius-lg); background: linear-gradient(150deg, var(--navy) 0%, #1e293b 55%, #334155 100%); box-shadow: var(--shadow-xl); padding: 32px 28px; display: flex; flex-direction: column; color: #fff; position: relative; overflow: hidden; transform: rotate(-3deg); transition: transform .5s var(--ease); }
+.ff-up-mockup:hover { transform: rotate(0deg) scale(1.02); }
+.ff-up-mockup::before { content: ''; position: absolute; top: -30%; right: -30%; width: 220px; height: 220px; background: radial-gradient(circle, rgba(245,158,11,0.25), transparent 70%); border-radius: 50%; }
+.ff-up-mockup-eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 16px; }
+.ff-up-mockup h3 { color: #fff; font-size: 22px; margin-bottom: 14px; }
+.ff-up-mockup ul { list-style: none; margin-top: auto; display: flex; flex-direction: column; gap: 10px; }
+.ff-up-mockup li { font-size: 12.5px; color: rgba(255,255,255,0.7); display: flex; align-items: center; gap: 8px; }
+.ff-up-mockup li svg { color: var(--gold); flex-shrink: 0; }
+.ff-up-price-tag { position: absolute; top: 20px; right: 20px; background: var(--gold); color: var(--navy); font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 13px; padding: 8px 14px; border-radius: 999px; }
+
+/* Copy column */
+.ff-up-copy h2 { font-size: clamp(22px, 3vw, 28px); margin-bottom: 16px; }
+.ff-up-copy > p { color: var(--grey-500); font-size: 16px; margin-bottom: 26px; }
+.ff-up-benefits { display: flex; flex-direction: column; gap: 16px; margin-bottom: 30px; }
+.ff-up-benefits li { display: flex; align-items: flex-start; gap: 12px; font-size: 15.5px; color: var(--navy-2); }
+.ff-up-check { flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; background: var(--success); color: #fff; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+
+.ff-up-included { background: var(--grey-50); border: 1px solid var(--grey-200); border-radius: var(--radius-md); padding: 24px; margin-bottom: 30px; }
+.ff-up-included h4 { font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--grey-500); margin-bottom: 14px; }
+.ff-up-included ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.ff-up-included li { display: flex; align-items: center; gap: 10px; font-size: 14.5px; color: var(--navy-2); }
+.ff-up-included li svg { color: var(--navy); flex-shrink: 0; }
+
+.ff-up-price-row { display: flex; align-items: baseline; gap: 12px; margin-bottom: 22px; }
+.ff-up-price-row .was { font-size: 16px; color: var(--grey-400); text-decoration: line-through; }
+.ff-up-price-row .now { font-family: 'Manrope', sans-serif; font-size: 32px; font-weight: 800; color: var(--navy); }
+.ff-up-price-row .note { font-size: 13px; color: var(--grey-500); }
+
+.ff-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-weight: 700; font-size: 16.5px; padding: 19px 32px; border-radius: var(--radius-btn); transition: transform .25s var(--ease), box-shadow .25s var(--ease); width: 100%; }
+.ff-btn-primary { background: var(--navy); color: #fff; box-shadow: 0 10px 26px rgba(15,23,42,0.28); }
+.ff-btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 42px rgba(15,23,42,0.36); }
+.ff-btn svg { transition: transform .25s var(--ease); }
+.ff-btn:hover svg { transform: translateX(4px); }
+
+.ff-up-decline { display: block; text-align: center; margin-top: 18px; font-size: 14.5px; color: var(--grey-500); font-weight: 600; padding: 10px; }
+.ff-up-decline:hover { color: var(--navy); text-decoration: underline; }
+
+.ff-up-trust { display: flex; align-items: center; gap: 18px; margin-top: 22px; flex-wrap: wrap; }
+.ff-up-trust div { display: flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--grey-400); font-weight: 600; }
+.ff-up-trust svg { color: var(--success); flex-shrink: 0; }
+
+.ff-up-footer { text-align: center; padding: 20px 0 60px; color: var(--grey-400); font-size: 13px; }

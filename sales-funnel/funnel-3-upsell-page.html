@@ -1,0 +1,123 @@
+<!-- ============================================================================
+     FITNESSFORGE — UPSELL PAGE (Nutrition Fundamentals Guide, £9.99)
+     ============================================================================
+     Pairs with funnel-3-upsell-page.css. Paste this whole file into ONE
+     Custom Code element on the page.
+
+     HOW THIS CONNECTS TO THE REST OF THE FUNNEL
+     ----------------------------------------------------------------------------
+     Both the "Yes, add this" button AND the "No thanks" link send the
+     visitor to your Checkout page — set CONFIG.CHECKOUT_URL below. The
+     only difference is whether ff_order.upsellAccepted is saved as true
+     or false in localStorage, which the Checkout page reads to decide
+     whether to include the £9.99 add-on in the order summary and total.
+     No payment is collected on this page.
+     ============================================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<div class="ff-page">
+  <header class="ff-up-header">
+    <div class="ff-mh-logo"><span class="ff-mh-mark">FF</span>FitnessForge</div>
+    <div class="ff-up-progress">Step 2 of 3 — One Quick Addition</div>
+  </header>
+
+  <section class="ff-up-hero">
+    <div class="ff-container ff-up-hero-inner">
+      <span class="ff-up-label">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg>
+        Before You Continue
+      </span>
+      <h1>Make Your Results Happen Faster With The Nutrition Fundamentals Guide.</h1>
+      <p class="lede">You've got the training system sorted. This is the simple, no-fuss nutrition companion that makes sure what you eat matches the work you're putting in — added to your order for a one-time £9.99.</p>
+    </div>
+  </section>
+
+  <div class="ff-container ff-up-grid">
+    <div class="ff-up-visual">
+      <div class="ff-up-mockup" aria-hidden="true">
+        <span class="ff-up-price-tag">£9.99</span>
+        <span class="ff-up-mockup-eyebrow">Add-On Guide</span>
+        <h3>Nutrition Fundamentals Guide</h3>
+        <ul>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Meal Planning Template</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Grocery List Guide</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Macro Basics Explained</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ff-up-copy">
+      <h2>Why This Is The Perfect Addition</h2>
+      <p>The Blueprint gives you the training — this gives you the other half of the equation. No calorie-counting spreadsheets, no confusing macros talk. Just a simple framework you can start using today.</p>
+
+      <ul class="ff-up-benefits">
+        <li><span class="ff-up-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Simple meal structure — no complicated tracking</li>
+        <li><span class="ff-up-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Built to work alongside your 12-week programme</li>
+        <li><span class="ff-up-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Instant digital access, same as your main order</li>
+      </ul>
+
+      <div class="ff-up-included">
+        <h4>What's Inside</h4>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v16"/></svg>Meal Planning Template</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l3 3v17H6z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>Grocery List Guide</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Macro Basics Explained, Simply</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Quick Reference Cheat Sheet</li>
+        </ul>
+      </div>
+
+      <div class="ff-up-price-row">
+        <span class="was">£24.99</span>
+        <span class="now">£9.99</span>
+        <span class="note">one-time, added to today's order</span>
+      </div>
+
+      <button type="button" class="ff-btn ff-btn-primary" id="ff-up-accept">
+        Yes, Add This To My Order
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+      <a href="#" class="ff-up-decline" id="ff-up-decline">No thanks, I'll continue without this</a>
+
+      <div class="ff-up-trust">
+        <div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Instant access</div>
+        <div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>One-time offer</div>
+        <div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Covered by the same guarantee</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="ff-up-footer">You won't be charged until the final checkout step.</p>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* CONFIG — set this to your Checkout page's URL */
+  var CONFIG = { CHECKOUT_URL: "#" };
+
+  var STORAGE_KEY = "ff_order";
+  function getOrder() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+    catch (e) { return {}; }
+  }
+  function saveOrder(data) {
+    var merged = Object.assign(getOrder(), data);
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(merged)); } catch (e) {}
+  }
+
+  document.getElementById("ff-up-accept").addEventListener("click", function () {
+    saveOrder({ upsellAccepted: true, upsellName: "Nutrition Fundamentals Guide", upsellPrice: 9.99 });
+    window.location.href = CONFIG.CHECKOUT_URL;
+  });
+
+  document.getElementById("ff-up-decline").addEventListener("click", function (e) {
+    e.preventDefault();
+    saveOrder({ upsellAccepted: false });
+    window.location.href = CONFIG.CHECKOUT_URL;
+  });
+
+})();
+</script>
