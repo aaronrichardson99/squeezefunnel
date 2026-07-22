@@ -306,17 +306,13 @@ html.ff-js .ff-reveal-right.is-visible { transform: translateX(0); }
 @media (max-width: 980px) { .ff-ba-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; } }
 .ff-ba-card { background: #fff; border: 1px solid var(--grey-200); border-radius: var(--radius-lg); overflow: hidden; transition: transform .4s var(--ease), box-shadow .4s var(--ease); }
 .ff-ba-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-xl); }
-.ff-ba-split { display: grid; grid-template-columns: 1fr 1fr; height: 200px; }
-.ff-ba-panel { position: relative; display: flex; align-items: flex-end; padding: 14px; overflow: hidden; }
-.ff-ba-panel.is-before { background: linear-gradient(160deg, #e2e8f0, #cbd5e1); }
-.ff-ba-panel.is-after { background: linear-gradient(160deg, var(--navy), #334155); }
-.ff-ba-panel span { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,0.85); color: var(--navy); }
-.ff-ba-panel.is-after span { background: rgba(255,255,255,0.16); color: #fff; }
-.ff-ba-panel svg { position: absolute; opacity: .18; top: 20px; right: 14px; }
+/* Leads with the real stat instead of a stand-in "before/after" photo —
+   no stock image or generic silhouette is honest here since these are
+   illustrative example testimonials, not real customer photos. */
+.ff-ba-highlight { background: linear-gradient(150deg, var(--navy), #1e293b 60%, #334155); padding: 30px 24px; text-align: center; }
+.ff-ba-highlight strong { display: block; font-family: 'Manrope', sans-serif; font-size: 34px; font-weight: 800; color: #fff; }
+.ff-ba-highlight span { display: block; font-size: 12.5px; color: rgba(255,255,255,0.6); margin-top: 4px; }
 .ff-ba-body { padding: 24px; }
-.ff-ba-stats { display: flex; gap: 16px; margin-bottom: 14px; }
-.ff-ba-stats div strong { display: block; font-family: 'Manrope', sans-serif; font-size: 19px; color: var(--navy); }
-.ff-ba-stats div span { font-size: 11.5px; color: var(--grey-500); }
 .ff-ba-body .stars { color: var(--gold); font-size: 14px; letter-spacing: 2px; margin-bottom: 10px; }
 .ff-ba-body p.quote { font-size: 14px; color: var(--navy-2); margin-bottom: 14px; }
 .ff-ba-body .who { font-size: 13px; font-weight: 700; color: var(--navy); }
