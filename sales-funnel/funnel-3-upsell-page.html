@@ -6,12 +6,13 @@
 
      HOW THIS CONNECTS TO THE REST OF THE FUNNEL
      ----------------------------------------------------------------------------
-     Both the "Yes, add this" button AND the "No thanks" link send the
-     visitor to your Checkout page — set CONFIG.CHECKOUT_URL below. The
-     only difference is whether ff_order.upsellAccepted is saved as true
-     or false in localStorage, which the Checkout page reads to decide
-     whether to include the £9.99 add-on in the order summary and total.
-     No payment is collected on this page.
+     There are now TWO destinations to set in CONFIG below:
+       • "Yes, add this"  → CONFIG.CHECKOUT_URL  (adds the £9.99 upsell)
+       • "No thanks"      → CONFIG.DOWNSELL_URL  (offers a cheaper option)
+     So a visitor who accepts goes straight to checkout, and one who
+     declines is shown the downsell page first. Whether they accept is
+     saved to localStorage (ff_order.upsellAccepted) for the checkout
+     order summary. No payment is collected on this page.
      ============================================================================ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -95,8 +96,10 @@
 (function () {
   "use strict";
 
-  /* CONFIG — set this to your Checkout page's URL */
-  var CONFIG = { CHECKOUT_URL: "#" };
+  /* CONFIG — set BOTH URLs:
+     CHECKOUT_URL: your Checkout page (used when they accept the upsell)
+     DOWNSELL_URL: your Downsell page (used when they decline) */
+  var CONFIG = { CHECKOUT_URL: "#", DOWNSELL_URL: "#" };
 
   var STORAGE_KEY = "ff_order";
   function getOrder() {
@@ -113,10 +116,12 @@
     window.location.href = CONFIG.CHECKOUT_URL;
   });
 
+  /* Declining the upsell sends them to the downsell (not straight to
+     checkout) so they get a second, cheaper offer. */
   document.getElementById("ff-up-decline").addEventListener("click", function (e) {
     e.preventDefault();
     saveOrder({ upsellAccepted: false });
-    window.location.href = CONFIG.CHECKOUT_URL;
+    window.location.href = CONFIG.DOWNSELL_URL;
   });
 
 })();

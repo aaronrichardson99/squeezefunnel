@@ -1,0 +1,126 @@
+<!-- ============================================================================
+     FITNESSFORGE — DOWNSELL PAGE (7-Day Kickstart Meal Plan, £4.99)
+     ============================================================================
+     Pairs with funnel-3b-downsell-page.css. Paste this whole file into ONE
+     Custom Code element on the page.
+
+     WHERE THIS SITS IN THE FUNNEL
+     ----------------------------------------------------------------------------
+     Sales → Order Form → Upsell → (if they say NO) → THIS Downsell → Checkout
+     A visitor only lands here if they declined the £9.99 upsell. It offers a
+     smaller, cheaper "second chance" so you still capture some added value.
+
+     Both buttons go to your Checkout page — set CONFIG.CHECKOUT_URL below.
+       • "Yes, add this" saves the £4.99 add-on to localStorage (checkout
+         reads it into the order summary + total).
+       • "No thanks" saves nothing and continues to checkout with just the
+         base product.
+     No payment is collected on this page.
+     ============================================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<div class="ff-page">
+  <header class="ff-ds-header">
+    <div class="ff-mh-logo"><span class="ff-mh-mark">FF</span>FitnessForge</div>
+    <div class="ff-ds-progress">Wait — One Last Option Before You Go</div>
+  </header>
+
+  <section class="ff-ds-hero">
+    <div class="ff-container ff-ds-hero-inner">
+      <span class="ff-ds-label">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg>
+        No Problem — How About This?
+      </span>
+      <h1>Not Ready For The Full Guide? Start With A Simple 7-Day Meal Plan.</h1>
+      <p class="lede">Totally understand. Instead of the complete nutrition system, here's a done-for-you <strong>7-Day Kickstart Meal Plan</strong> — the easiest possible way to line your eating up with your training, for just £4.99.</p>
+    </div>
+  </section>
+
+  <div class="ff-container ff-ds-grid">
+    <div class="ff-ds-visual">
+      <div class="ff-ds-mockup" aria-hidden="true">
+        <span class="ff-ds-price-tag">£4.99</span>
+        <span class="ff-ds-mockup-eyebrow">Kickstart Plan</span>
+        <h3>7-Day Kickstart Meal Plan</h3>
+        <ul>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>7 Days Of Meals, Done For You</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Simple Shopping List</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Zero Tracking Required</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ff-ds-copy">
+      <h2>The Easiest Way To Start Eating Right</h2>
+      <p>No planning, no thinking, no macros. Just follow the 7 days exactly as laid out and let your nutrition take care of itself while you focus on training.</p>
+
+      <ul class="ff-ds-benefits">
+        <li><span class="ff-ds-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Every meal mapped out for a full week</li>
+        <li><span class="ff-ds-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>The perfect low-commitment first step</li>
+        <li><span class="ff-ds-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Instant digital access, same as your main order</li>
+      </ul>
+
+      <div class="ff-ds-included">
+        <h4>What's Inside</h4>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v16"/></svg>7-Day Meal Schedule</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l3 3v17H6z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>One-Page Shopping List</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 8l10 6 10-6-10-6Z"/><path d="m2 14 10 6 10-6"/></svg>Simple Swap Suggestions</li>
+        </ul>
+      </div>
+
+      <div class="ff-ds-price-row">
+        <span class="was">£14.99</span>
+        <span class="now">£4.99</span>
+        <span class="note">one-time, added to today's order</span>
+      </div>
+
+      <button type="button" class="ff-btn ff-btn-primary" id="ff-ds-accept">
+        Yes, Add The Meal Plan
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+      <a href="#" class="ff-ds-decline" id="ff-ds-decline">No thanks, just take me to checkout</a>
+
+      <div class="ff-ds-trust">
+        <div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Instant access</div>
+        <div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Just £4.99</div>
+        <div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Covered by the same guarantee</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="ff-ds-footer">You won't be charged until the final checkout step.</p>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* CONFIG — set this to your Checkout page's URL */
+  var CONFIG = { CHECKOUT_URL: "#" };
+
+  var STORAGE_KEY = "ff_order";
+  function getOrder() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+    catch (e) { return {}; }
+  }
+  function saveOrder(data) {
+    var merged = Object.assign(getOrder(), data);
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(merged)); } catch (e) {}
+  }
+
+  document.getElementById("ff-ds-accept").addEventListener("click", function () {
+    saveOrder({ downsellAccepted: true, downsellName: "7-Day Kickstart Meal Plan", downsellPrice: 4.99 });
+    window.location.href = CONFIG.CHECKOUT_URL;
+  });
+
+  document.getElementById("ff-ds-decline").addEventListener("click", function (e) {
+    e.preventDefault();
+    saveOrder({ downsellAccepted: false });
+    window.location.href = CONFIG.CHECKOUT_URL;
+  });
+
+})();
+</script>

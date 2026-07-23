@@ -167,9 +167,16 @@
   }
 
   var html = lineItemHTML(BASE_NAME, "12-week digital programme", BASE_PRICE);
+  /* Add whichever optional item they accepted. Upsell and downsell are
+     mutually exclusive (the downsell only appears after declining the
+     upsell), so at most one of these blocks ever runs. */
   if (order.upsellAccepted && order.upsellPrice) {
     total += order.upsellPrice;
     html += lineItemHTML(order.upsellName || "Nutrition Fundamentals Guide", "Digital add-on guide", order.upsellPrice);
+  }
+  if (order.downsellAccepted && order.downsellPrice) {
+    total += order.downsellPrice;
+    html += lineItemHTML(order.downsellName || "7-Day Kickstart Meal Plan", "Digital add-on", order.downsellPrice);
   }
   lineItemsEl.innerHTML = html;
   document.getElementById("ff-co-subtotal").textContent = "£" + total.toFixed(2);

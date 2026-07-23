@@ -125,8 +125,12 @@
 
   var listEl = document.getElementById("ff-ty-download-list");
   var html = downloadItemHTML("The Physique Builder Blueprint", "12-week training programme + nutrition guide + trackers");
+  /* Add whichever optional item they bought — upsell or downsell. */
   if (order.upsellAccepted) {
     html += downloadItemHTML(order.upsellName || "Nutrition Fundamentals Guide", "Digital add-on guide");
+  }
+  if (order.downsellAccepted) {
+    html += downloadItemHTML(order.downsellName || "7-Day Kickstart Meal Plan", "Digital add-on");
   }
   listEl.innerHTML = html;
 
