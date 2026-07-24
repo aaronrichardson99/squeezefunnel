@@ -7,16 +7,14 @@
      doesn't run, it just won't say the customer's name or list their
      specific items.
 
-     BEFORE PUBLISHING, REPLACE THESE PLACEHOLDERS:
+     ONE THING TO SET BEFORE PUBLISHING:
      ----------------------------------------------------------------------------
-     - The "Access Now" button hrefs (currently "#") — point them at your
-       real file downloads or GHL membership area.
-     - The video placeholder — embed your real welcome video (a YouTube/
-       Vimeo embed, or a GHL video element dropped in the same spot).
-     - The Instagram/TikTok/YouTube links (currently "#") — your real
-       profile URLs.
-     - The "Join Our Community" link — your real Facebook Group/Discord/
-       Skool URL.
+     Set CONFIG.GUIDE_URL in the <script> at the bottom to the web address
+     where your "Physique Builder Blueprint — Complete Guide" is hosted
+     (e.g. its own page on fitnessforgehq.com). The "Access Guide" button
+     opens that link in a new tab. Until you set it, the button points
+     nowhere. The Instagram + TikTok links are already wired to your real
+     profiles.
      ============================================================================ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,24 +31,13 @@
         <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
       </div>
       <h1 id="ff-ty-headline">Welcome To FitnessForge!</h1>
-      <p id="ff-ty-subline">Your order is confirmed. Everything has been sent straight to your email — you're ready to get started.</p>
+      <p id="ff-ty-subline">Your order is confirmed and your Blueprint is ready to access below — let's get started.</p>
     </section>
 
     <!-- Purchased items / downloads (populated from the order) -->
     <section class="ff-ty-downloads">
       <h3>Your Downloads</h3>
       <div id="ff-ty-download-list"><!-- populated by JS --></div>
-    </section>
-
-    <!-- Welcome video placeholder -->
-    <section class="ff-ty-video">
-      <h3>Start Here</h3>
-      <div class="ff-ty-video-frame" aria-hidden="true">
-        <button class="ff-ty-play-btn" aria-label="Play welcome video">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M8 5v14l11-7-11-7Z"/></svg>
-        </button>
-        <span class="ff-ty-video-label">Watch: Getting Started With Your Blueprint (4 min)</span>
-      </div>
     </section>
 
     <!-- Next steps -->
@@ -63,8 +50,8 @@
       </div>
       <div class="ff-ty-step-card">
         <div class="ff-ty-step-num">2</div>
-        <h4>Watch The Welcome Video</h4>
-        <p>A 4-minute walkthrough of exactly how to use everything you just got, so you start on the right foot.</p>
+        <h4>Open Your Guide</h4>
+        <p>Tap the "Access Guide" button above to open your complete Blueprint and read through it from the start.</p>
       </div>
       <div class="ff-ty-step-card">
         <div class="ff-ty-step-num">3</div>
@@ -73,15 +60,13 @@
       </div>
     </section>
 
-    <!-- Community + social -->
+    <!-- Follow on social -->
     <section class="ff-ty-community">
-      <h2>Join The FitnessForge Community</h2>
-      <p>Get support, share your progress and stay accountable alongside hundreds of other members on the same journey.</p>
+      <h2>Follow FitnessForge</h2>
+      <p>Come along for daily tips, form breakdowns and motivation — follow the journey on Instagram and TikTok.</p>
       <div class="ff-ty-social-row">
-        <a href="#" class="ff-ty-social-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>Instagram</a>
-        <a href="#" class="ff-ty-social-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>TikTok</a>
-        <a href="#" class="ff-ty-social-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="m10 9 5 3-5 3V9Z"/></svg>YouTube</a>
-        <a href="#" class="ff-ty-social-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Join The Group</a>
+        <a href="https://www.instagram.com/aaronrichardsonfit" target="_blank" rel="noopener" class="ff-ty-social-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>Instagram</a>
+        <a href="https://www.tiktok.com/@aaronrfitness" target="_blank" rel="noopener" class="ff-ty-social-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>TikTok</a>
       </div>
     </section>
   </div>
@@ -92,6 +77,11 @@
 <script>
 (function () {
   "use strict";
+
+  /* CONFIG — set GUIDE_URL to where your Complete Guide is hosted
+     (e.g. its own page: https://www.fitnessforgehq.com/blueprint).
+     The main "Access Guide" button opens it in a new tab. */
+  var CONFIG = { GUIDE_URL: "#" };
 
   var STORAGE_KEY = "ff_order";
   function getOrder() {
@@ -107,30 +97,34 @@
   }
   if (order.email) {
     document.getElementById("ff-ty-subline").innerHTML =
-      'Your order is confirmed. Everything has been sent to <strong>' + order.email + '</strong> — you\'re ready to get started.';
+      'Your order is confirmed and a receipt is on its way to <strong>' + order.email + '</strong>. Your Blueprint is ready to access below.';
   }
 
   /* Render the purchased items. Falls back to just the base product if
-     localStorage has nothing (e.g. this page was opened directly). */
-  function downloadItemHTML(name, sub) {
+     localStorage has nothing (e.g. this page was opened directly).
+     `href` is the link the Access button opens; `newTab` opens it in a
+     new tab (used for the main guide). */
+  function downloadItemHTML(name, sub, href, label, newTab) {
+    var target = newTab ? ' target="_blank" rel="noopener"' : '';
     return '<div class="ff-ty-download-item">' +
       '<div class="ff-ty-download-thumb">FF</div>' +
       '<div class="ff-ty-download-info"><h4>' + name + '</h4><span>' + sub + '</span></div>' +
-      '<a href="#" class="ff-ty-download-btn">' +
-        'Access Now' +
+      '<a href="' + href + '"' + target + ' class="ff-ty-download-btn">' +
+        label +
         '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>' +
       '</a>' +
     '</div>';
   }
 
   var listEl = document.getElementById("ff-ty-download-list");
-  var html = downloadItemHTML("The Physique Builder Blueprint", "12-week training programme + nutrition guide + trackers");
+  /* Main product links to your hosted Complete Guide (opens in a new tab). */
+  var html = downloadItemHTML("The Physique Builder Blueprint — Complete Guide", "Your complete 12-week guide", CONFIG.GUIDE_URL, "Access Guide", true);
   /* Add whichever optional item they bought — upsell or downsell. */
   if (order.upsellAccepted) {
-    html += downloadItemHTML(order.upsellName || "Nutrition Fundamentals Guide", "Digital add-on guide");
+    html += downloadItemHTML(order.upsellName || "Nutrition Fundamentals Guide", "Digital add-on guide", "#", "Access Now", false);
   }
   if (order.downsellAccepted) {
-    html += downloadItemHTML(order.downsellName || "7-Day Kickstart Meal Plan", "Digital add-on");
+    html += downloadItemHTML(order.downsellName || "7-Day Kickstart Meal Plan", "Digital add-on", "#", "Access Now", false);
   }
   listEl.innerHTML = html;
 

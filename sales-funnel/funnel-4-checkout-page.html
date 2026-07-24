@@ -74,12 +74,15 @@
       <div class="ff-co-card">
         <div class="ff-co-section-title"><span class="n">3</span>Payment Details</div>
 
-        <div class="ff-co-processor-note">
-          <strong>For the person implementing this page:</strong>
-          Replace the card fields below with GoHighLevel's native Payment
-          Collection element before publishing — see the comment at the
-          top of this file's HTML for why.
-        </div>
+        <!-- ┌────────────────────────────────────────────────────────────────┐
+             │ PAYMENT — IMPORTANT (this comment is invisible to customers)   │
+             │ The card fields below are a VISUAL DESIGN ONLY. They do not     │
+             │ charge anyone — no script on this page reads or sends them.     │
+             │ To take real payments, delete everything between the           │
+             │ "PAYMENT DETAILS" markers and drop GoHighLevel's native        │
+             │ Payment / Order Form element into this spot (it handles the     │
+             │ card entry + Stripe charge + success redirect for you).        │
+             └────────────────────────────────────────────────────────────────┘ -->
 
         <!-- PAYMENT DETAILS — replace this block with GHL's native payment element -->
         <div class="ff-co-card-icons"><span>VISA</span><span>MASTERCARD</span><span>AMEX</span></div>
@@ -108,8 +111,8 @@
       <h3>Order Summary</h3>
       <div id="ff-co-line-items"><!-- populated by JS from localStorage --></div>
       <div class="ff-co-totals">
-        <div class="ff-co-totals-row"><span>Subtotal</span><span id="ff-co-subtotal">£49.99</span></div>
-        <div class="ff-co-totals-row grand"><span>Total Due Today</span><span id="ff-co-total">£49.99</span></div>
+        <div class="ff-co-totals-row"><span>Subtotal</span><span id="ff-co-subtotal">£39.99</span></div>
+        <div class="ff-co-totals-row grand"><span>Total Due Today</span><span id="ff-co-total">£39.99</span></div>
       </div>
 
       <div class="ff-co-guarantee">
@@ -146,7 +149,7 @@
   }
 
   var order = getOrder();
-  var BASE_PRICE = 49.99;
+  var BASE_PRICE = 39.99;
   var BASE_NAME = "The Physique Builder Blueprint";
 
   /* Pre-fill contact fields from the order form / upsell pages */
