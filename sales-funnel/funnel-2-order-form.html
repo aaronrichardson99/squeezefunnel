@@ -185,7 +185,10 @@
 
     saveOrder({ firstName: first, lastName: last, phone: phoneInput.value.trim() });
 
-    window.location.href = CONFIG.UPSELL_URL;
+    /* Navigate the whole page (window.top) so it works even if GHL runs
+       this code inside a frame; fall back to normal navigation. */
+    try { window.top.location.href = CONFIG.UPSELL_URL; }
+    catch (e) { window.location.href = CONFIG.UPSELL_URL; }
   });
 
   /* Allow pressing Enter to advance each step */

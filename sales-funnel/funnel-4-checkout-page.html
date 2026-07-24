@@ -212,8 +212,10 @@
     });
 
     /* In production, this redirect should happen only after your real
-       payment element confirms a successful charge — not on click. */
-    window.location.href = CONFIG.THANK_YOU_URL;
+       payment element confirms a successful charge — not on click.
+       Navigate the whole page (window.top) so it works even inside a frame. */
+    try { window.top.location.href = CONFIG.THANK_YOU_URL; }
+    catch (e) { window.location.href = CONFIG.THANK_YOU_URL; }
   });
 
 })();
