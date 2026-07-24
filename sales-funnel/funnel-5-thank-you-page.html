@@ -118,7 +118,7 @@
 
   var listEl = document.getElementById("ff-ty-download-list");
   /* Main product links to your hosted Complete Guide (opens in a new tab). */
-  var html = downloadItemHTML("The Physique Builder Blueprint — Complete Guide", "Your complete 12-week guide", CONFIG.GUIDE_URL, "Access Guide", true);
+  var html = downloadItemHTML("The Physique Builder Blueprint — Complete Guide", "Your complete 12-week guide (PDF)", CONFIG.GUIDE_URL, "Download Guide", true);
   /* Add whichever optional item they bought — upsell or downsell. */
   if (order.upsellAccepted) {
     html += downloadItemHTML(order.upsellName || "Nutrition Fundamentals Guide", "Digital add-on guide", "#", "Access Now", false);
