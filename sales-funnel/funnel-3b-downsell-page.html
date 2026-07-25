@@ -98,3 +98,35 @@
   <p class="ff-ds-footer">Your payment details are already saved — one click adds this to your order.</p>
 </div>
 
+<!-- ============================================================================
+     PURCHASE TRACKING — makes the £4.99 meal plan show up on the order summary
+     ----------------------------------------------------------------------------
+     GHL's native "Buy / 1-click upsell" button lives BELOW this Custom Code
+     block. Give that button the CSS class  ff-buy-downsell  (in the builder:
+     select the button → Advanced/Styles → add class "ff-buy-downsell"). When
+     it's clicked, the script records the add-on in the browser so the Order
+     Summary widget (on the thank-you page) can display it and add it to the
+     total.
+
+     If GHL sandboxes this code and the click never registers, use GHL's native
+     Order Confirmation element on the thank-you page instead — ask me and I'll
+     set that up. This script collects no payment and changes no navigation.
+     ============================================================================ -->
+<script>
+(function () {
+  "use strict";
+  function save(data) {
+    try {
+      var o = JSON.parse(localStorage.getItem("ff_order")) || {};
+      Object.assign(o, data);
+      localStorage.setItem("ff_order", JSON.stringify(o));
+    } catch (e) {}
+  }
+  document.addEventListener("click", function (e) {
+    if (e.target.closest && e.target.closest(".ff-buy-downsell")) {
+      save({ downsellAccepted: true, downsellName: "7-Day Kickstart Meal Plan", downsellPrice: 4.99 });
+    }
+  }, true);
+})();
+</script>
+
