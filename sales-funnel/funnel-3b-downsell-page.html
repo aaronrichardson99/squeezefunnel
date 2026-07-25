@@ -74,16 +74,18 @@
       <div class="ff-ds-price-row">
         <span class="was">£14.99</span>
         <span class="now">£4.99</span>
-        <span class="note">one-time, added to today's order</span>
+        <span class="note">one-time — add it with a single click</span>
       </div>
 
-      <!-- Real links (target="_top" forces the whole page to change, even
-           if GHL runs this code inside a frame). Both go to checkout. -->
-      <a href="https://www.fitnessforgehq.com/checkout" target="_top" class="ff-btn ff-btn-primary" id="ff-ds-accept" role="button">
-        Yes, Add The Meal Plan
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-      <a href="https://www.fitnessforgehq.com/checkout" target="_top" class="ff-ds-decline" id="ff-ds-decline">No thanks, just take me to checkout</a>
+      <!-- ▼▼▼ GHL 1-CLICK BUTTONS GO HERE ▼▼▼
+           Custom code can't hold GHL's native buttons, so in the builder add
+           them as their own elements DIRECTLY BELOW this Custom Code block:
+             • GHL "Buy / 1-click upsell" button  → charges £4.99 to the card
+               already on file, then redirects to your THANK YOU step.
+             • GHL "No thanks" button             → also goes to your THANK YOU step.
+           Style them to match: navy #0f172a background, white text, full
+           width, 12px rounded corners (and the "No thanks" as a plain text
+           link in grey). ▲▲▲ -->
 
       <div class="ff-ds-trust">
         <div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Instant access</div>
@@ -93,35 +95,6 @@
     </div>
   </div>
 
-  <p class="ff-ds-footer">You won't be charged until the final checkout step.</p>
+  <p class="ff-ds-footer">Your payment details are already saved — one click adds this to your order.</p>
 </div>
 
-<script>
-(function () {
-  "use strict";
-
-  /* NAVIGATION IS HANDLED BY THE LINKS ABOVE (their href + target="_top").
-     Both buttons go to /checkout. This script only records whether they
-     added the meal plan, so the checkout can show the right total. */
-  var STORAGE_KEY = "ff_order";
-  function getOrder() {
-    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
-    catch (e) { return {}; }
-  }
-  function saveOrder(data) {
-    var merged = Object.assign(getOrder(), data);
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(merged)); } catch (e) {}
-  }
-
-  document.getElementById("ff-ds-accept").addEventListener("click", function () {
-    saveOrder({ downsellAccepted: true, downsellName: "7-Day Kickstart Meal Plan", downsellPrice: 4.99 });
-    /* no redirect here — the link navigates on its own */
-  });
-
-  document.getElementById("ff-ds-decline").addEventListener("click", function () {
-    saveOrder({ downsellAccepted: false });
-    /* no redirect here — the link navigates on its own */
-  });
-
-})();
-</script>
