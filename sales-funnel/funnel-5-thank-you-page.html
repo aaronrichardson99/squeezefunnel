@@ -78,10 +78,18 @@
 (function () {
   "use strict";
 
-  /* CONFIG — set GUIDE_URL to where your Complete Guide is hosted
-     (e.g. its own page: https://www.fitnessforgehq.com/blueprint).
-     The main "Access Guide" button opens it in a new tab. */
-  var CONFIG = { GUIDE_URL: "https://assets.cdn.filesafe.space/t8ZBqxxMmbygtZyy0zEV/media/6a63904dd3104247ab4220a8.pdf" };
+  /* CONFIG — the hosted URL for each downloadable guide (upload each PDF to
+     GHL media storage, then paste its link here). Every "Download" button
+     opens its file in a new tab.
+       • GUIDE_URL     → The Physique Builder Blueprint (always shown)
+       • NUTRITION_URL → Nutrition Fundamentals Guide (shown if the upsell was bought)
+       • MEALPLAN_URL  → 7-Day Kickstart Meal Plan   (shown if the downsell was bought)
+     GUIDE_URL is already set. Paste the other two links where marked below. */
+  var CONFIG = {
+    GUIDE_URL:     "https://assets.cdn.filesafe.space/t8ZBqxxMmbygtZyy0zEV/media/6a63904dd3104247ab4220a8.pdf",
+    NUTRITION_URL: "PASTE_NUTRITION_GUIDE_PDF_URL_HERE",
+    MEALPLAN_URL:  "PASTE_MEAL_PLAN_PDF_URL_HERE"
+  };
 
   var STORAGE_KEY = "ff_order";
   function getOrder() {
@@ -119,12 +127,13 @@
   var listEl = document.getElementById("ff-ty-download-list");
   /* Main product links to your hosted Complete Guide (opens in a new tab). */
   var html = downloadItemHTML("The Physique Builder Blueprint — Complete Guide", "Your complete 12-week guide (PDF)", CONFIG.GUIDE_URL, "Download Guide", true);
-  /* Add whichever optional item they bought — upsell or downsell. */
+  /* Add whichever optional item they bought — upsell or downsell. Each
+     opens its own hosted PDF in a new tab, just like the main guide. */
   if (order.upsellAccepted) {
-    html += downloadItemHTML(order.upsellName || "Nutrition Fundamentals Guide", "Digital add-on guide", "#", "Access Now", false);
+    html += downloadItemHTML(order.upsellName || "Nutrition Fundamentals Guide", "Your nutrition companion (PDF)", CONFIG.NUTRITION_URL, "Download Guide", true);
   }
   if (order.downsellAccepted) {
-    html += downloadItemHTML(order.downsellName || "7-Day Kickstart Meal Plan", "Digital add-on", "#", "Access Now", false);
+    html += downloadItemHTML(order.downsellName || "7-Day Kickstart Meal Plan", "Your 7-day meal plan (PDF)", CONFIG.MEALPLAN_URL, "Download Plan", true);
   }
   listEl.innerHTML = html;
 
