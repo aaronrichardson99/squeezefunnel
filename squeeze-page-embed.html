@@ -393,9 +393,9 @@
     // (Workflow → Add Trigger → "Inbound Webhook", or your Form's action URL)
     FORM_ENDPOINT: "",
 
-    // Where to send visitors after a successful signup (optional).
-    // Leave empty to keep them on this page and show the inline success message.
-    REDIRECT_URL: ""
+    // Where to send visitors after a successful signup.
+    // This is your Thank You page — the submit button redirects here.
+    REDIRECT_URL: "https://www.fitnessforgehq.com/thank-you-page"
   };
 
   var root = document.querySelector(".ff-page");
@@ -538,7 +538,11 @@
         successEl.classList.add("is-visible");
 
         if (CONFIG.REDIRECT_URL) {
-          window.location.href = CONFIG.REDIRECT_URL;
+          // GoHighLevel runs custom code inside an iframe, so navigate the
+          // TOP window to break out of that frame; fall back to this window
+          // if the browser blocks cross-frame access.
+          try { window.top.location.href = CONFIG.REDIRECT_URL; }
+          catch (err) { window.location.href = CONFIG.REDIRECT_URL; }
         }
       };
 
