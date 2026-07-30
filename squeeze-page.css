@@ -365,6 +365,15 @@ html.ff-js .ff-reveal.is-visible { opacity: 1; transform: translateY(0); }
 .ff-social-row--center { justify-content: center; margin-top: 28px; margin-bottom: 4px; }
 
 /* ----------------------------------------------------------------------------
+   Slot that holds the native GoHighLevel form embed (an <iframe>). Keeps the
+   form a sensible width and lets its own iframe height flow naturally.
+   ---------------------------------------------------------------------------- */
+.ff-ghl-form-slot { width: 100%; max-width: 480px; }
+.ff-ghl-form-slot iframe { width: 100% !important; border: none; display: block; }
+.ff-ghl-form-slot--center { margin-left: auto; margin-right: auto; }
+@media (max-width: 960px) { .ff-ghl-form-slot { margin-left: auto; margin-right: auto; } }
+
+/* ----------------------------------------------------------------------------
    Form cues — the "Enter your email below" prompt that replaces the old email
    box and points down to the real GoHighLevel form beneath each code block.
    ---------------------------------------------------------------------------- */
