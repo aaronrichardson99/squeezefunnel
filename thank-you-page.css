@@ -132,6 +132,21 @@
 .ff-ty-hero .ff-sub { font-size: clamp(17px, 2vw, 20px); color: var(--grey-500); max-width: 560px; margin: 0 auto; }
 .ff-ty-hero .ff-sub strong { color: var(--navy); }
 
+/* Download button */
+.ff-ty-download-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  margin-top: 32px;
+  padding: 18px 34px;
+  background: var(--navy); color: #fff;
+  font-family: 'Poppins', 'Inter', sans-serif; font-weight: 700; font-size: 17px;
+  border-radius: 14px; text-decoration: none;
+  box-shadow: 0 10px 26px rgba(15,23,42,0.28);
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+}
+.ff-ty-download-btn:hover { transform: translateY(-3px); box-shadow: 0 20px 42px rgba(15,23,42,0.36); }
+.ff-ty-download-btn svg { transition: transform .25s var(--ease); }
+.ff-ty-download-btn:hover svg { transform: translateY(2px); }
+
 /* ==========================================================================
    5. "WHAT HAPPENS NEXT" STEPS — reuses the same card pattern as the
       squeeze page's benefit cards for visual consistency
