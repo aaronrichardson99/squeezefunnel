@@ -125,19 +125,15 @@
   background: linear-gradient(180deg, transparent 62%, rgba(15, 23, 42, 0.12) 62%);
 }
 
-/* Entrance animation — ALWAYS visible, never JS-dependent.
-   Sections stay at full opacity as their resting state, and a soft one-time
-   fade-in is done purely in CSS (no script needed). This matters because the
-   page is split across several GoHighLevel code blocks: a single shared
-   script can't reliably reach every block, so if visibility depended on JS,
-   whole sections could load invisible. With this approach nothing can ever go
-   missing — worst case, the fade just doesn't play and the content is simply
-   shown. */
-.ff-reveal { opacity: 1; animation: ff-fade-in .7s var(--ease) both; }
-@keyframes ff-fade-in {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+/* Reveal-on-scroll. Sections fade + rise in as they enter view. This is gated
+   on the "ff-js" class, which each code block's script adds to ITS OWN document
+   the instant it runs. That gate is the safety net: if a block's script is ever
+   stripped or blocked, that block never gets "ff-js", so its sections simply
+   stay fully visible instead of disappearing. (The script also has a timed
+   failsafe that reveals anything still hidden after a few seconds.) */
+.ff-reveal { transition: opacity .7s var(--ease), transform .7s var(--ease); }
+html.ff-js .ff-reveal { opacity: 0; transform: translateY(24px); }
+html.ff-js .ff-reveal.is-visible { opacity: 1; transform: translateY(0); }
 
 /* Floating background blobs (decorative depth) */
 .ff-blob {
