@@ -508,6 +508,34 @@
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
   }
 
+  /* Deliver the lead to GoHighLevel. Uses navigator.sendBeacon, which is
+     designed to reliably send data even as the page redirects away — so the
+     contact is created (and your automation triggered) before the visitor
+     lands on the Thank You page. Falls back to a keepalive fetch if beacon
+     isn't available. Returns quietly if no endpoint is configured yet. */
+  function sendLead(email) {
+    if (!CONFIG.FORM_ENDPOINT) return;
+    var payload = JSON.stringify({
+      email: email,
+      source: "FitnessForge Squeeze Page"
+    });
+    try {
+      if (navigator.sendBeacon &&
+          navigator.sendBeacon(CONFIG.FORM_ENDPOINT, new Blob([payload], { type: "application/json" }))) {
+        return;
+      }
+    } catch (e) {}
+    try {
+      fetch(CONFIG.FORM_ENDPOINT, {
+        method: "POST",
+        mode: "no-cors",
+        keepalive: true,
+        headers: { "Content-Type": "application/json" },
+        body: payload
+      });
+    } catch (e) {}
+  }
+
   function setupForm(formId) {
     var form = document.getElementById(formId);
     if (!form) return;
@@ -546,28 +574,11 @@
         }
       };
 
-      if (CONFIG.FORM_ENDPOINT) {
-        // "no-cors" is used because most GHL inbound webhooks don't return
-        // CORS headers. The response is opaque, so we optimistically treat
-        // a resolved fetch as success.
-        fetch(CONFIG.FORM_ENDPOINT, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: email, source: "FitnessForge Squeeze Page" })
-        })
-          .then(finish)
-          .catch(function () {
-            submitBtn.classList.remove("is-loading");
-            submitBtn.removeAttribute("disabled");
-            errorEl.textContent = "Something went wrong. Please try again.";
-            errorEl.classList.add("is-visible");
-          });
-      } else {
-        // No endpoint configured yet — simulate the success state so the
-        // page can be previewed. Set CONFIG.FORM_ENDPOINT before going live.
-        window.setTimeout(finish, 700);
-      }
+      // Send the lead to GoHighLevel (triggers your automation), then show
+      // the success state and redirect. The lead is dispatched via sendBeacon
+      // so it still reaches GHL even though we navigate away a moment later.
+      sendLead(email);
+      window.setTimeout(finish, 400);
     });
   }
 
