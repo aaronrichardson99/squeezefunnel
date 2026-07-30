@@ -360,6 +360,54 @@ html.ff-js .ff-reveal.is-visible { opacity: 1; transform: translateY(0); }
 .ff-social-row strong { color: var(--navy); }
 .ff-stars-inline { color: var(--gold); letter-spacing: 2px; font-size: 14px; display: block; }
 
+/* Centered variant — used at the top of Block 2, directly under the hero form */
+.ff-social-row--center { justify-content: center; margin-top: 28px; margin-bottom: 4px; }
+
+/* ----------------------------------------------------------------------------
+   Form cues — the "Enter your email below" prompt that replaces the old email
+   box and points down to the real GoHighLevel form beneath each code block.
+   ---------------------------------------------------------------------------- */
+.ff-hero-cue,
+.ff-final-cue {
+  display: inline-flex; align-items: center; gap: 9px;
+  margin-top: 30px;
+  font-weight: 600; font-size: 15.5px; letter-spacing: -0.01em;
+}
+.ff-hero-cue { color: var(--navy); }
+.ff-hero-cue svg,
+.ff-final-cue svg { animation: ff-cue-bounce 1.8s var(--ease) infinite; }
+.ff-final-cue { color: rgba(255,255,255,0.82); margin-top: 4px; }
+@media (max-width: 960px) { .ff-hero-cue { justify-content: center; } }
+@keyframes ff-cue-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+/* ============================================================================
+   STYLING THE NATIVE GHL FORM TO MATCH THIS PAGE
+   ----------------------------------------------------------------------------
+   GoHighLevel renders its Form element inside its own frame, so the page CSS
+   here can't reach the input/button directly. Match the design INSIDE the GHL
+   form builder (Form → Styles), using these exact values:
+
+     • Button background ......... #0f172a   (navy)
+     • Button text color ......... #ffffff
+     • Button font ............... Poppins (or Inter), weight 700
+     • Button label .............. "Get My Free Guide"
+     • Button border radius ...... 14px
+     • Button full width ......... on
+     • Field background .......... #ffffff
+     • Field border .............. 1.5px solid #e2e8f0
+     • Field radius .............. 14px
+     • Field text / label color .. #0f172a
+
+   If your form builder has a "Custom CSS" box, you can also paste:
+     .ghl-form button[type="submit"]{background:#0f172a;color:#fff;border-radius:14px;font-weight:700;width:100%;}
+     .ghl-form input{border:1.5px solid #e2e8f0;border-radius:14px;}
+   (selector names vary by GHL version — the Styles panel above is the reliable
+   route.)
+   ============================================================================ */
+
 /* --- Hero Guide Mockup (pure CSS 3D book) --- */
 .ff-hero-visual { position: relative; display: flex; align-items: center; justify-content: center; min-height: 420px; }
 .ff-book-scene { perspective: 1800px; position: relative; }

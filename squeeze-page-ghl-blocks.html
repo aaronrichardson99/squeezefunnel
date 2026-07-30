@@ -1,59 +1,39 @@
 <!--
   ============================================================================
-  ⚠ SUPERSEDED — USE squeeze-page-ghl-blocks.html INSTEAD
+  FITNESSFORGE — SQUEEZE PAGE, BUILT FOR A FREE NATIVE GHL FORM
   ============================================================================
-  This single-block version still contains the old custom-coded email boxes,
-  which do NOT connect to your GoHighLevel automation. To capture leads for
-  free with a native GHL form, build the page from squeeze-page-ghl-blocks.html
-  (it's split into 3 code blocks with gaps for the real GHL form). This file is
-  kept only for reference.
-  ============================================================================
+  This is your landing page split into THREE Custom Code blocks so a real
+  GoHighLevel Form element can sit between them. (GHL won't let a form live
+  INSIDE a code block, so we leave gaps for it.)
 
-  ============================================================================
-  FITNESSFORGE — FREE MUSCLE BUILDING GUIDE SQUEEZE PAGE (HTML + JS)
-  ============================================================================
-  This file works together with squeeze-page.css — the styling now lives
-  there so it can be pasted into GoHighLevel's dedicated Custom CSS field.
+  The two old fake email boxes have been REMOVED — the only way to sign up is
+  now the real GHL form, which feeds your automation.
 
-  HOW TO USE IN GOHIGHLEVEL
+  HOW TO BUILD IT IN GOHIGHLEVEL
   ----------------------------------------------------------------------------
-  1. Paste the ENTIRE contents of squeeze-page.css into your GoHighLevel
-     Funnel/Website page's "Custom CSS" field
-     (Funnel/Website Builder → Settings → Custom CSS, or Page Settings →
-     Advanced → Custom CSS, depending on your GHL layout).
-  2. In the page itself, drag in a "Custom Code" (HTML) element, set it to
-     full width, and paste this ENTIRE file into it.
-  3. Connect the form to GoHighLevel by editing the CONFIG block inside the
-     <script> tag at the bottom of this file:
-       - FORM_ENDPOINT: paste your GHL Form/Workflow inbound webhook URL
-         (Settings → Integrations → or a Workflow "Inbound Webhook" trigger).
-       - REDIRECT_URL: the URL of your "Thank You" / guide-delivery page.
-     If you leave FORM_ENDPOINT empty, the form will still work visually
-     (shows the success state) so you can preview the page, but no lead data
-     will be sent anywhere — set this before going live.
-  4. Alternatively, you can swap the <form> markup for a native GHL Form
-     element and keep everything else — all classes are namespaced with
-     "ff-" so they won't clash with GHL's own styles.
-  5. The stats in the "Animated Statistics" section (500+ downloads, 97%
-     satisfaction, etc.) are placeholder examples — replace with your real
-     numbers before publishing.
+  0. Paste squeeze-page.css into the page's Custom CSS field (as before).
+  1. Add a Custom Code element → paste everything between BLOCK 1 START/END.
+  2. Below it, add a GHL FORM element (your email form). This is FORM #1.
+  3. Add a second Custom Code element → paste BLOCK 2 START/END.
+  4. Below it, add the SAME GHL FORM again. This is FORM #2.
+  5. Add a third Custom Code element → paste BLOCK 3 START/END.
+  6. In the FORM's settings → On Submit → Redirect to:
+        https://www.fitnessforgehq.com/thank-you-page
+     and make sure your Workflow uses the "Form Submitted" trigger.
+
+  Order on the page, top to bottom:
+     [BLOCK 1]  →  [GHL FORM]  →  [BLOCK 2]  →  [GHL FORM]  →  [BLOCK 3]
   ============================================================================
 -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FitnessForge — Free Muscle Building Guide</title>
-<meta name="description" content="Get the free FitnessForge Muscle Building Guide — a science-based, step-by-step system to build muscle, lose fat and get stronger.">
 
-<!-- Preconnect + Premium Google Fonts (Poppins for display, Inter for body) -->
+
+<!-- ============================================================================
+     ##### BLOCK 1 START — paste into Custom Code element #1 (top / hero) #####
+     ============================================================================ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 
-</head>
-<body>
 <div class="ff-page">
 
   <!-- ======================= HEADER / LOGO ======================= -->
@@ -72,7 +52,7 @@
     <div class="ff-blob ff-blob-2" aria-hidden="true"></div>
 
     <div class="ff-container ff-hero-grid">
-      <!-- Hero copy + form -->
+      <!-- Hero copy -->
       <div class="ff-hero-copy ff-reveal">
         <span class="ff-eyebrow">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg>
@@ -84,40 +64,10 @@
         <p class="ff-sub">
           Get the free, <strong>science-based</strong> system that shows you exactly how to train, eat and progress — so you stop guessing and start seeing real results in the mirror.
         </p>
-
-        <div class="ff-hero-form-block">
-          <div class="ff-form-wrap">
-            <form class="ff-form" id="ff-form-hero" novalidate>
-              <div class="ff-form-field">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 7 9 6 9-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg>
-                <input type="email" name="email" placeholder="Enter your best email" aria-label="Email address" required>
-              </div>
-              <button type="submit" class="ff-btn ff-btn-primary">
-                <span class="ff-spinner" aria-hidden="true"></span>
-                <span class="ff-btn-label">Get My Free Guide</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              </button>
-            </form>
-            <p class="ff-form-error" role="alert">Please enter a valid email address.</p>
-            <div class="ff-form-success" role="status">
-              <span class="ff-check">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-              </span>
-              <div><strong>You're in! Check your inbox.</strong><span>Your free guide is on its way to your email.</span></div>
-            </div>
-            <p class="ff-form-note">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-              We respect your privacy. Unsubscribe anytime.
-            </p>
-          </div>
-
-          <div class="ff-social-row">
-            <div class="ff-avatar-stack" aria-hidden="true">
-              <span>JM</span><span>ST</span><span>LR</span><span>CB</span>
-            </div>
-            <p><strong>500+</strong> lifters already downloaded this guide</p>
-          </div>
-        </div>
+        <p class="ff-hero-cue">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+          Enter your email just below to get instant access
+        </p>
       </div>
 
       <!-- Hero visual: 3D book mockup of the free guide -->
@@ -150,6 +100,34 @@
     </div>
   </section>
 
+</div>
+<!-- ============================================================================
+     ##### BLOCK 1 END #####
+     ============================================================================ -->
+
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
+     GHL FORM #1 GOES HERE — add your GoHighLevel Form element in this gap,
+     directly below BLOCK 1. Keep this section's background WHITE so it blends
+     into the hero. (Set the form's On-Submit redirect to your thank-you page.)
+     ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+<!-- ============================================================================
+     ##### BLOCK 2 START — paste into Custom Code element #2 (body) #####
+     ============================================================================ -->
+<div class="ff-page">
+
+  <!-- Social proof — sits right under the hero form -->
+  <div class="ff-container">
+    <div class="ff-social-row ff-social-row--center ff-reveal">
+      <div class="ff-avatar-stack" aria-hidden="true">
+        <span>JM</span><span>ST</span><span>LR</span><span>CB</span>
+      </div>
+      <p><strong>500+</strong> lifters already downloaded this guide</p>
+    </div>
+  </div>
+
   <!-- ======================= 2. SOCIAL PROOF MARQUEE ======================= -->
   <section class="ff-marquee-section" aria-label="Customer testimonials">
     <div class="ff-marquee-head ff-reveal">
@@ -157,7 +135,6 @@
     </div>
     <div class="ff-marquee-viewport">
       <div class="ff-marquee-track" id="ff-marquee-track">
-        <!-- Testimonial cards (duplicated in JS/markup for seamless loop) -->
         <article class="ff-review-card"><div class="ff-review-stars">★★★★★</div><p class="quote">"I finally stopped guessing in the gym. The guide completely changed how I train."</p><div class="ff-review-person"><span class="ff-review-avatar">JM</span><div><strong>James M.</strong><span>Beginner lifter</span></div></div></article>
         <article class="ff-review-card"><div class="ff-review-stars">★★★★★</div><p class="quote">"The most straightforward fitness guide I've ever read. No fluff, just what works."</p><div class="ff-review-person"><span class="ff-review-avatar">ST</span><div><strong>Sarah T.</strong><span>Intermediate lifter</span></div></div></article>
         <article class="ff-review-card"><div class="ff-review-stars">★★★★★</div><p class="quote">"I've gained 6kg and feel stronger than ever. Progressive overload finally makes sense."</p><div class="ff-review-person"><span class="ff-review-avatar">LR</span><div><strong>Luke R.</strong><span>Beginner lifter</span></div></div></article>
@@ -227,7 +204,7 @@
     <div class="ff-container">
       <div class="ff-stats-grid">
         <div class="ff-reveal">
-          <div class="ff-stat-num" data-count-to="2500" data-suffix="+">500+</div>
+          <div class="ff-stat-num" data-count-to="500" data-suffix="+">500+</div>
           <div class="ff-stat-label">Guides Downloaded</div>
         </div>
         <div class="ff-reveal">
@@ -322,7 +299,7 @@
             Is it really free?
             <span class="ff-faq-toggle" aria-hidden="true"></span>
           </button>
-          <div class="ff-faq-answer-outer"><div class="ff-faq-answer-inner"><p>Yes — 100% free, no catch. Just enter your email above and we'll send the full guide straight to your inbox.</p></div></div>
+          <div class="ff-faq-answer-outer"><div class="ff-faq-answer-inner"><p>Yes — 100% free, no catch. Just enter your email in the form and we'll send the full guide straight to your inbox.</p></div></div>
         </div>
         <div class="ff-faq-item">
           <button class="ff-faq-question" aria-expanded="false">
@@ -349,32 +326,32 @@
       <div class="ff-final-cta-inner ff-reveal">
         <h2>Ready To Start Building Your Best Physique?</h2>
         <p>Join 500+ lifters who stopped guessing and started following a proven, science-based system.</p>
-
-        <div class="ff-form-wrap">
-          <form class="ff-form on-dark" id="ff-form-final" novalidate>
-            <div class="ff-form-field">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 7 9 6 9-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg>
-              <input type="email" name="email" placeholder="Enter your best email" aria-label="Email address" required>
-            </div>
-            <button type="submit" class="ff-btn ff-btn-light">
-              <span class="ff-spinner" style="border-color:rgba(15,23,42,0.25);border-top-color:var(--navy);" aria-hidden="true"></span>
-              <span class="ff-btn-label">Get Instant Access</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </button>
-          </form>
-          <p class="ff-form-error" role="alert">Please enter a valid email address.</p>
-          <div class="ff-form-success" role="status">
-            <span class="ff-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-            <div><strong>You're in! Check your inbox.</strong><span>Your free guide is on its way to your email.</span></div>
-          </div>
-          <p class="ff-form-note on-dark">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            We respect your privacy. Unsubscribe anytime.
-          </p>
-        </div>
+        <p class="ff-final-cue">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+          Enter your email just below to get instant access
+        </p>
       </div>
     </div>
   </section>
+
+</div>
+<!-- ============================================================================
+     ##### BLOCK 2 END #####
+     ============================================================================ -->
+
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
+     GHL FORM #2 GOES HERE — add the SAME GoHighLevel Form element in this gap,
+     directly below BLOCK 2. For this one, set the section background to NAVY
+     (#0f172a) so it matches the dark final-CTA band above it. Same form, same
+     redirect — it feeds the same automation.
+     ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+<!-- ============================================================================
+     ##### BLOCK 3 START — paste into Custom Code element #3 (footer) #####
+     ============================================================================ -->
+<div class="ff-page">
 
   <!-- ======================= FOOTER ======================= -->
   <footer class="ff-footer">
@@ -395,38 +372,17 @@
 (function () {
   "use strict";
 
-  /* ========================================================================
-     CONFIGURATION — EDIT THESE VALUES FOR YOUR GOHIGHLEVEL SETUP
-     ======================================================================== */
-  var CONFIG = {
-    // Paste your GoHighLevel inbound webhook / form action URL here.
-    // (Workflow → Add Trigger → "Inbound Webhook", or your Form's action URL)
-    FORM_ENDPOINT: "",
-
-    // Where to send visitors after a successful signup.
-    // This is your Thank You page — the submit button redirects here.
-    REDIRECT_URL: "https://www.fitnessforgehq.com/thank-you-page"
-  };
-
-  var root = document.querySelector(".ff-page");
-
-  /* ----------------------------------------------------------------------
-     Flag that JS is running — CSS uses this to enable the scroll-reveal
-     fade-in. Without this flag, every section stays visible by default
-     (see the "Reveal-on-scroll" comment in squeeze-page.css).
-     ---------------------------------------------------------------------- */
+  /* Flag that JS is running so the CSS scroll-reveal fade-in switches on.
+     Without this, every section stays visible by default (graceful fallback). */
   document.documentElement.classList.add("ff-js");
 
-  /* ----------------------------------------------------------------------
-     Footer year
-     ---------------------------------------------------------------------- */
+  /* Footer year */
   var yearEl = document.getElementById("ff-year");
   if (yearEl) { yearEl.textContent = new Date().getFullYear(); }
 
-  /* ----------------------------------------------------------------------
-     Scroll-reveal animations (fade + rise into view, once)
-     ---------------------------------------------------------------------- */
-  var revealEls = root.querySelectorAll(".ff-reveal");
+  /* Scroll-reveal animations. Queries the whole document so it works across
+     all three separate code blocks. */
+  var revealEls = document.querySelectorAll(".ff-reveal");
   if ("IntersectionObserver" in window) {
     var revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -441,30 +397,23 @@
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
   }
 
-  /* ----------------------------------------------------------------------
-     Animated statistic counters (count up once, on scroll into view)
-     ---------------------------------------------------------------------- */
+  /* Animated statistic counters (count up once, on scroll into view) */
   function animateCount(el) {
     var target = parseInt(el.getAttribute("data-count-to"), 10) || 0;
     var suffix = el.getAttribute("data-suffix") || "";
     var duration = 1800;
     var start = null;
-
     function step(timestamp) {
       if (!start) start = timestamp;
       var progress = Math.min((timestamp - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      var eased = 1 - Math.pow(1 - progress, 3);
       var value = Math.floor(eased * target);
       el.textContent = value.toLocaleString() + suffix;
-      if (progress < 1) {
-        window.requestAnimationFrame(step);
-      } else {
-        el.textContent = target.toLocaleString() + suffix;
-      }
+      if (progress < 1) { window.requestAnimationFrame(step); }
+      else { el.textContent = target.toLocaleString() + suffix; }
     }
     window.requestAnimationFrame(step);
   }
-
   var statsSection = document.getElementById("ff-stats");
   if (statsSection && "IntersectionObserver" in window) {
     var statNums = statsSection.querySelectorAll(".ff-stat-num");
@@ -481,10 +430,7 @@
     statsSection.querySelectorAll(".ff-stat-num").forEach(animateCount);
   }
 
-  /* ----------------------------------------------------------------------
-     Testimonial marquee — pause on hover/focus (also handled by CSS,
-     JS ensures keyboard-focus users get the same pause behaviour)
-     ---------------------------------------------------------------------- */
+  /* Testimonial marquee — pause on keyboard focus (hover handled by CSS) */
   var marqueeViewport = document.querySelector(".ff-marquee-viewport");
   var marqueeTrack = document.getElementById("ff-marquee-track");
   if (marqueeViewport && marqueeTrack) {
@@ -492,10 +438,8 @@
     marqueeViewport.addEventListener("focusout", function () { marqueeTrack.classList.remove("is-paused"); });
   }
 
-  /* ----------------------------------------------------------------------
-     FAQ accordion
-     ---------------------------------------------------------------------- */
-  var faqItems = root.querySelectorAll(".ff-faq-item");
+  /* FAQ accordion */
+  var faqItems = document.querySelectorAll(".ff-faq-item");
   faqItems.forEach(function (item) {
     var question = item.querySelector(".ff-faq-question");
     question.addEventListener("click", function () {
@@ -510,92 +454,8 @@
       }
     });
   });
-
-  /* ----------------------------------------------------------------------
-     Email opt-in forms (Hero + Final CTA)
-     ---------------------------------------------------------------------- */
-  function isValidEmail(value) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-  }
-
-  /* Deliver the lead to GoHighLevel. Uses navigator.sendBeacon, which is
-     designed to reliably send data even as the page redirects away — so the
-     contact is created (and your automation triggered) before the visitor
-     lands on the Thank You page. Falls back to a keepalive fetch if beacon
-     isn't available. Returns quietly if no endpoint is configured yet. */
-  function sendLead(email) {
-    if (!CONFIG.FORM_ENDPOINT) return;
-    var payload = JSON.stringify({
-      email: email,
-      source: "FitnessForge Squeeze Page"
-    });
-    try {
-      if (navigator.sendBeacon &&
-          navigator.sendBeacon(CONFIG.FORM_ENDPOINT, new Blob([payload], { type: "application/json" }))) {
-        return;
-      }
-    } catch (e) {}
-    try {
-      fetch(CONFIG.FORM_ENDPOINT, {
-        method: "POST",
-        mode: "no-cors",
-        keepalive: true,
-        headers: { "Content-Type": "application/json" },
-        body: payload
-      });
-    } catch (e) {}
-  }
-
-  function setupForm(formId) {
-    var form = document.getElementById(formId);
-    if (!form) return;
-
-    var wrap = form.closest(".ff-form-wrap");
-    var errorEl = wrap.querySelector(".ff-form-error");
-    var successEl = wrap.querySelector(".ff-form-success");
-    var submitBtn = form.querySelector(".ff-btn");
-    var input = form.querySelector('input[type="email"]');
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var email = input.value.trim();
-
-      if (!isValidEmail(email)) {
-        errorEl.classList.add("is-visible");
-        input.focus();
-        return;
-      }
-      errorEl.classList.remove("is-visible");
-      submitBtn.classList.add("is-loading");
-      submitBtn.setAttribute("disabled", "true");
-
-      var finish = function () {
-        submitBtn.classList.remove("is-loading");
-        submitBtn.removeAttribute("disabled");
-        form.style.display = "none";
-        successEl.classList.add("is-visible");
-
-        if (CONFIG.REDIRECT_URL) {
-          // GoHighLevel runs custom code inside an iframe, so navigate the
-          // TOP window to break out of that frame; fall back to this window
-          // if the browser blocks cross-frame access.
-          try { window.top.location.href = CONFIG.REDIRECT_URL; }
-          catch (err) { window.location.href = CONFIG.REDIRECT_URL; }
-        }
-      };
-
-      // Send the lead to GoHighLevel (triggers your automation), then show
-      // the success state and redirect. The lead is dispatched via sendBeacon
-      // so it still reaches GHL even though we navigate away a moment later.
-      sendLead(email);
-      window.setTimeout(finish, 400);
-    });
-  }
-
-  setupForm("ff-form-hero");
-  setupForm("ff-form-final");
-
 })();
 </script>
-</body>
-</html>
+<!-- ============================================================================
+     ##### BLOCK 3 END #####
+     ============================================================================ -->
