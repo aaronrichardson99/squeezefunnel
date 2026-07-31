@@ -44,18 +44,18 @@
 
       <!-- ============================================================
            SOFT-GATE: the download only shows when the visitor arrives
-           from the form. Set your GHL form's On-Submit redirect to:
-             https://fitnessforgehq.com/free-guide-download?ok=1
-           The "?ok=1" tag is what unlocks the button below. Someone who
-           just types the bare URL (no tag) sees the "locked" message
-           instead. (Deterrent, not bulletproof — the real gate is the
-           emailed copy.) Hidden by default so it fails safe.
+           from the form. The "?ok=1" tag is what unlocks the button.
+           IMPORTANT — the "?ok=1" goes on the FORM's On-Submit redirect
+           setting, NOT on the page's URL slug. Set the form redirect to:
+             https://fitnessforgehq.com/free-guide-downlaod-ok1?ok=1
+           Someone who types the bare page URL (no ?ok=1) sees the
+           "locked" message instead. Deterrent, not bulletproof — the real
+           gate is the emailed copy. Hidden by default so it fails safe.
            ============================================================ -->
 
-      <!-- UNLOCKED: real download button (revealed by the script when ?ok=1 is present).
-           Swap the href for your single-PDF media link once uploaded. -->
+      <!-- UNLOCKED: real download button (revealed by the script when ?ok=1 is present). -->
       <div id="ff-guide-unlocked" style="display:none">
-        <a href="https://assets.cdn.filesafe.space/ZpeB3gTyfZBw0mwckBEx/media/6a6ba8cccdfcf04956c385e0.zip" target="_blank" rel="noopener" class="ff-ty-download-btn">
+        <a href="https://assets.cdn.filesafe.space/ZpeB3gTyfZBw0mwckBEx/media/6a6c8f669559bfd4027ce415.pdf" target="_blank" rel="noopener" class="ff-ty-download-btn">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
           Download Your Free Guide
         </a>
