@@ -147,6 +147,15 @@
 .ff-ty-download-btn svg { transition: transform .25s var(--ease); }
 .ff-ty-download-btn:hover svg { transform: translateY(2px); }
 
+/* Locked state — shown when the page is opened directly (not via the form) */
+.ff-ty-locked { margin-top: 30px; }
+.ff-ty-locked p {
+  display: inline-flex; align-items: center; gap: 9px;
+  max-width: 460px; margin: 0 auto 18px;
+  font-size: 15px; color: var(--grey-500); line-height: 1.5;
+}
+.ff-ty-locked p svg { flex-shrink: 0; color: var(--navy); }
+
 /* ==========================================================================
    5. "WHAT HAPPENS NEXT" STEPS — reuses the same card pattern as the
       squeeze page's benefit cards for visual consistency
