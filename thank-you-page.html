@@ -42,34 +42,13 @@
         Download <strong>The Body Recomposition Guide</strong> right here — we've also emailed you a copy so you'll always have it.
       </p>
 
-      <!-- ============================================================
-           SOFT-GATE: the download only shows when the visitor arrives
-           from the form. The "?ok=1" tag is what unlocks the button.
-           IMPORTANT — the "?ok=1" goes on the FORM's On-Submit redirect
-           setting, NOT on the page's URL slug. Set the form redirect to:
-             https://fitnessforgehq.com/free-guide-downlaod-ok1?ok=1
-           Someone who types the bare page URL (no ?ok=1) sees the
-           "locked" message instead. Deterrent, not bulletproof — the real
-           gate is the emailed copy. Hidden by default so it fails safe.
-           ============================================================ -->
-
-      <!-- UNLOCKED: real download button (revealed by the script when ?ok=1 is present). -->
-      <div id="ff-guide-unlocked" style="display:none">
-        <a href="https://assets.cdn.filesafe.space/ZpeB3gTyfZBw0mwckBEx/media/6a6c8f669559bfd4027ce415.pdf" target="_blank" rel="noopener" class="ff-ty-download-btn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
-          Download Your Free Guide
-        </a>
-      </div>
-
-      <!-- LOCKED: shown to anyone who reaches the page without going through the form. -->
-      <div id="ff-guide-locked" class="ff-ty-locked">
-        <p>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          This download is for subscribers. Enter your email on our free guide page and we'll send it straight over.
-        </p>
-        <!-- Update this link to your squeeze / landing page URL if different -->
-        <a href="https://www.fitnessforgehq.com/landing-page" class="ff-ty-download-btn">Get The Free Guide</a>
-      </div>
+      <!-- DOWNLOAD BUTTON — links straight to the single-PDF guide (opens in a
+           new tab). The PDF link lives in the href below. Protection comes from
+           the hard-to-guess page URL plus the emailed copy of the guide. -->
+      <a href="https://assets.cdn.filesafe.space/ZpeB3gTyfZBw0mwckBEx/media/6a6c8f669559bfd4027ce415.pdf" target="_blank" rel="noopener" class="ff-ty-download-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+        Download Your Free Guide
+      </a>
     </div>
   </section>
 
@@ -115,20 +94,3 @@
   </footer>
 
 </div>
-
-<script>
-/* Soft-gate: only reveal the download when the visitor arrived from the form.
-   The GHL form's On-Submit redirect should point at
-   https://fitnessforgehq.com/free-guide-download?ok=1 — that "?ok=1" tag
-   unlocks the button. Bare-URL visitors keep the "locked" message. */
-(function () {
-  "use strict";
-  var unlocked = /[?&]ok=1(?:&|$)/.test(window.location.search);
-  var lockEl = document.getElementById("ff-guide-locked");
-  var openEl = document.getElementById("ff-guide-unlocked");
-  if (unlocked && openEl && lockEl) {
-    openEl.style.display = "";
-    lockEl.style.display = "none";
-  }
-})();
-</script>
