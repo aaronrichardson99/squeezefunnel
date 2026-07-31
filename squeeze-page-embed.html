@@ -371,36 +371,10 @@
   var D = document, W = window;
   D.documentElement.classList.add("ff-js");
 
-  /* ----------------------------------------------------------------------
-     Send visitors to the thank-you page when the GHL form is submitted.
-     The form lives in a GoHighLevel iframe, which posts a message to this
-     page on submit; we catch that message and redirect the top window.
-     (Belt-and-suspenders: you can also set On Submit → Redirect inside the
-     GHL form builder — if GHL ever changes its message format, that still
-     works.)
-     ---------------------------------------------------------------------- */
-  var THANK_YOU_URL = "https://fitnessforgehq.com/free-guide-download";
-  var redirected = false;
-  function looksLikeSubmit(data) {
-    if (!data) return false;
-    if (typeof data === "string") return /submit/i.test(data);
-    if (typeof data === "object") {
-      var sig = String(data.type || data.event || data.action || data.name || "");
-      return /submit/i.test(sig);
-    }
-    return false;
-  }
-  W.addEventListener("message", function (e) {
-    if (redirected) return;
-    var origin = e.origin || "";
-    if (origin.indexOf("leadconnectorhq.com") === -1 &&
-        origin.indexOf("msgsndr.com") === -1 &&
-        origin.indexOf("leadconnector") === -1) { return; }
-    if (!looksLikeSubmit(e.data)) return;
-    redirected = true;
-    try { W.top.location.href = THANK_YOU_URL; }
-    catch (err) { W.location.href = THANK_YOU_URL; }
-  });
+  /* NOTE: The redirect after the form is submitted is handled by GoHighLevel
+     itself (form builder → On Submit → Redirect to URL). We deliberately do
+     NOT redirect from here, so nothing in this page can interrupt the form
+     while it is submitting. */
 
   /* Footer year */
   var y = D.getElementById("ff-year");
