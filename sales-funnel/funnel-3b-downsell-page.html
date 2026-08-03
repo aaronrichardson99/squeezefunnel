@@ -77,15 +77,17 @@
         <span class="note">one-time — add it with a single click</span>
       </div>
 
-      <!-- ▼▼▼ GHL 1-CLICK BUTTONS GO HERE ▼▼▼
-           Custom code can't hold GHL's native buttons, so in the builder add
-           them as their own elements DIRECTLY BELOW this Custom Code block:
-             • GHL "Buy / 1-click upsell" button  → charges £4.99 to the card
-               already on file, then redirects to your THANK YOU step.
-             • GHL "No thanks" button             → also goes to your THANK YOU step.
-           Style them to match: navy #0f172a background, white text, full
-           width, 12px rounded corners (and the "No thanks" as a plain text
-           link in grey). ▲▲▲ -->
+      <!-- Yes / No actions. Hard links with target="_top" so they navigate the
+           whole page even inside GoHighLevel's frame. "Yes" saves the add-on to
+           the order first (see script); both buttons then go to checkout, since
+           the downsell is the last offer before payment. -->
+      <div class="ff-ds-actions">
+        <a href="https://fitnessforgehq.com/checkout" target="_top" id="ff-ds-yes" class="ff-btn ff-btn-primary">
+          Yes — Add This To My Order (£4.99)
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="https://fitnessforgehq.com/checkout" target="_top" id="ff-ds-no" class="ff-ds-decline">No thanks — continue to checkout</a>
+      </div>
 
       <div class="ff-ds-trust">
         <div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Instant access</div>
@@ -99,18 +101,10 @@
 </div>
 
 <!-- ============================================================================
-     PURCHASE TRACKING — makes the £4.99 meal plan show up on the order summary
-     ----------------------------------------------------------------------------
-     GHL's native "Buy / 1-click upsell" button lives BELOW this Custom Code
-     block. Give that button the CSS class  ff-buy-downsell  (in the builder:
-     select the button → Advanced/Styles → add class "ff-buy-downsell"). When
-     it's clicked, the script records the add-on in the browser so the Order
-     Summary widget (on the thank-you page) can display it and add it to the
-     total.
-
-     If GHL sandboxes this code and the click never registers, use GHL's native
-     Order Confirmation element on the thank-you page instead — ask me and I'll
-     set that up. This script collects no payment and changes no navigation.
+     "Yes" click — record the £4.99 meal plan in the browser so the checkout
+     total and the thank-you order summary include it. The save is synchronous,
+     so the "Yes" link's normal navigation to checkout happens right after.
+     "No" just continues to checkout (nothing saved). No payment on this page.
      ============================================================================ -->
 <script>
 (function () {
@@ -122,11 +116,12 @@
       localStorage.setItem("ff_order", JSON.stringify(o));
     } catch (e) {}
   }
-  document.addEventListener("click", function (e) {
-    if (e.target.closest && e.target.closest(".ff-buy-downsell")) {
+  var yes = document.getElementById("ff-ds-yes");
+  if (yes) {
+    yes.addEventListener("click", function () {
       save({ downsellAccepted: true, downsellName: "7-Day Kickstart Meal Plan", downsellPrice: 4.99 });
-    }
-  }, true);
+    });
+  }
 })();
 </script>
 
