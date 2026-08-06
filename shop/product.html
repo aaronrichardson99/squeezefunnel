@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Program — FitnessForge</title>
+<meta name="description" content="Program details — FitnessForge.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shop.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo"><span class="logo-mark">FF</span>FitnessForge</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="programs.html" class="active">Shop</a>
+      <a href="index.html#reviews">Reviews</a>
+      <a href="index.html#about">About</a>
+    </nav>
+    <div class="nav-right">
+      <a href="cart.html" class="cart-btn" aria-label="View cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-count">0</span>
+      </a>
+      <button class="nav-burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="menu-backdrop" id="backdrop"></div>
+<nav class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="programs.html">Shop</a>
+  <a href="index.html#reviews">Reviews</a>
+  <a href="index.html#about">About</a>
+  <a href="cart.html">Cart</a>
+</nav>
+
+<main>
+<div class="container" style="padding-top:26px;">
+  <div class="crumbs" style="justify-content:flex-start;" id="crumbs"><a href="index.html">Home</a><span>/</span><a href="programs.html">Shop</a></div>
+</div>
+<div class="container">
+  <div class="product-detail" id="detail"><!-- rendered by JS --></div>
+</div>
+
+<!-- Related -->
+<section class="section" style="padding-top:10px;">
+  <div class="container">
+    <div class="section-head reveal" style="margin-bottom:30px;">
+      <span class="eyebrow">You Might Also Like</span>
+      <h2 style="font-size:clamp(24px,4vw,34px);">Complete The System</h2>
+    </div>
+    <div class="shop-grid" id="relatedGrid"></div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <a href="index.html" class="logo"><span class="logo-mark">FF</span>FitnessForge</a>
+      <nav class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="programs.html">Shop</a>
+        <a href="index.html#reviews">Reviews</a>
+        <a href="index.html#about">About</a>
+        <a href="cart.html">Cart</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">&copy; <span id="year"></span> FitnessForge. Build muscle. Backed by science.</div>
+  </div>
+</footer>
+
+<script src="assets/shop.js"></script>
+<script>
+(function(){
+  var id = new URLSearchParams(location.search).get("id");
+  var p = FF.CATALOG[id];
+  var detail = document.getElementById("detail");
+  if(!p){
+    detail.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 0;">'
+      + '<h1>Program not found</h1><p class="muted" style="margin:12px 0 24px;">That program doesn\'t exist.</p>'
+      + '<a class="btn btn-primary" href="programs.html">Back to Shop</a></div>';
+    return;
+  }
+  document.title = p.name + " — FitnessForge";
+  document.getElementById("crumbs").innerHTML += '<span>/</span>' + FF.esc(p.name);
+
+  var save = p.compare ? Math.round((1 - p.price / p.compare) * 100) : 0;
+  var bullets = p.bullets.map(function(b){ return '<li>'+FF.CHECK+'<span>'+FF.esc(b)+'</span></li>'; }).join("");
+
+  detail.innerHTML =
+    '<div class="pd-media reveal">' + FF.coverHTML(p) + '</div>'
+    + '<div class="pd-info reveal">'
+    +   (p.badge ? '<span class="pc-badge '+(p.badgeClass||"")+'">'+FF.esc(p.badge)+'</span>' : "")
+    +   '<h1>'+FF.esc(p.name)+'</h1>'
+    +   '<div class="pd-rating"><span class="stars">★★★★★</span> <strong>'+p.rating.toFixed(1)+'</strong> · '+p.reviews+' reviews</div>'
+    +   '<div class="pd-price"><span class="now">'+FF.money(p.price)+'</span>'+(p.compare?'<span class="was">'+FF.money(p.compare)+'</span>':'')+'</div>'
+    +   (save>0 ? '<span class="pd-save">Save '+save+'% today</span>' : '')
+    +   '<p class="pd-desc">'+FF.esc(p.short)+'</p>'
+    +   '<ul class="pd-list">'+bullets+'</ul>'
+    +   '<div class="pd-cta">'
+    +     '<button class="btn btn-primary btn-lg" data-buy="'+p.id+'">Add to Cart · '+FF.money(p.price)
+    +       '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>'
+    +   '</div>'
+    +   '<div class="pd-trust">'
+    +     '<span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Instant digital access</span>'
+    +     '<span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg> 14-day guarantee</span>'
+    +     '<span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Secure checkout</span>'
+    +   '</div>'
+    + '</div>';
+
+  // related = everything else, up to 3
+  var related = Object.keys(FF.CATALOG).filter(function(k){ return k !== id; }).slice(0,3);
+  FF.renderGrid(document.getElementById("relatedGrid"), related);
+
+  // reveal for JS-inserted nodes
+  document.querySelectorAll(".pd-media,.pd-info").forEach(function(el){ setTimeout(function(){ el.classList.add("is-visible"); }, 60); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Cart — FitnessForge</title>
+<meta name="description" content="Review your FitnessForge order.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shop.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo"><span class="logo-mark">FF</span>FitnessForge</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="programs.html">Shop</a>
+      <a href="index.html#reviews">Reviews</a>
+      <a href="index.html#about">About</a>
+    </nav>
+    <div class="nav-right">
+      <a href="cart.html" class="cart-btn active" aria-label="View cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-count">0</span>
+      </a>
+      <button class="nav-burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="menu-backdrop" id="backdrop"></div>
+<nav class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="programs.html">Shop</a>
+  <a href="index.html#reviews">Reviews</a>
+  <a href="index.html#about">About</a>
+  <a href="cart.html">Cart</a>
+</nav>
+
+<main>
+<div class="page-head" style="padding-bottom:24px;">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Home</a><span>/</span><a href="programs.html">Shop</a><span>/</span>Cart</div>
+    <h1>Your Cart</h1>
+  </div>
+</div>
+
+<div class="container" style="padding-bottom:50px;">
+  <div id="cartWrap"><!-- rendered by JS --></div>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <a href="index.html" class="logo"><span class="logo-mark">FF</span>FitnessForge</a>
+      <nav class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="programs.html">Shop</a>
+        <a href="index.html#reviews">Reviews</a>
+        <a href="index.html#about">About</a>
+        <a href="cart.html">Cart</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">&copy; <span id="year"></span> FitnessForge. Build muscle. Backed by science.</div>
+  </div>
+</footer>
+
+<script src="assets/shop.js"></script>
+<script>
+(function(){
+  var COVER_BG = { blueprint:"#1e293b", masterclass:"#243b6b", cookbook:"#7c5a16", nutrition:"#14532d", mealplan:"#9a3412" };
+  var wrap = document.getElementById("cartWrap");
+
+  function render(){
+    var items = FF.cartProducts();
+    if(!items.length){
+      wrap.innerHTML =
+        '<div class="cart-empty">'
+        + '<svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg>'
+        + '<h3>Your cart is empty</h3><p>Browse the programs and add one to get started.</p>'
+        + '<a class="btn btn-primary" href="programs.html">Shop Programs</a></div>';
+      return;
+    }
+    var rows = items.map(function(p){
+      var initials = p.name.split(" ").slice(0,2).map(function(w){return w[0];}).join("");
+      return '<div class="cart-item" data-id="'+p.id+'">'
+        + '<div class="ci-thumb" style="background:linear-gradient(135deg,'+COVER_BG[p.cover]+',#0f172a);">'+FF.esc(initials)+'</div>'
+        + '<div class="ci-main"><div class="ci-name">'+FF.esc(p.name)+'</div><div class="ci-meta">'+FF.esc(p.tag)+' · digital</div></div>'
+        + '<div class="ci-right"><div class="ci-price tabnum">'+FF.money(p.price)+'</div>'
+        + '<button class="ci-remove" data-remove="'+p.id+'"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg> Remove</button>'
+        + '</div></div>';
+    }).join("");
+    var total = FF.cartTotal();
+    wrap.innerHTML =
+      '<div class="cart-layout">'
+      + '<div class="cart-items">'+rows+'<a href="programs.html" class="muted" style="font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:7px;margin-top:6px;">'
+      +   '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Continue shopping</a></div>'
+      + '<div class="summary">'
+      +   '<h3>Order Summary</h3>'
+      +   '<div class="sum-row"><span>Subtotal</span><span class="tabnum">'+FF.money(total)+'</span></div>'
+      +   '<div class="sum-row"><span>Delivery</span><span class="free">Instant &amp; Free</span></div>'
+      +   '<div class="sum-row total"><span>Total</span><span class="tabnum">'+FF.money(total)+'</span></div>'
+      +   '<a class="btn btn-primary btn-block btn-lg" href="checkout.html">Proceed to Checkout'
+      +     '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>'
+      +   '<p class="sum-note"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Secure checkout · 14-day guarantee</p>'
+      + '</div></div>';
+  }
+
+  wrap.addEventListener("click", function(e){
+    var btn = e.target.closest("[data-remove]");
+    if(btn){ FF.removeItem(btn.getAttribute("data-remove")); FF.toast("Removed from cart"); render(); }
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout — FitnessForge</title>
+<meta name="description" content="Complete your FitnessForge order.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shop.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo"><span class="logo-mark">FF</span>FitnessForge</a>
+    <div class="nav-right">
+      <a href="cart.html" class="cart-btn" aria-label="View cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-count">0</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="page-head" style="padding-bottom:20px;">
+  <div class="container">
+    <div class="crumbs"><a href="cart.html">Cart</a><span>/</span>Checkout</div>
+    <h1>Checkout</h1>
+  </div>
+</div>
+
+<div class="container" style="padding-bottom:50px;">
+  <form class="checkout-layout" id="checkoutForm" novalidate>
+    <div class="form-card">
+      <h2>Your details</h2>
+      <p class="sub">Where should we send your programs?</p>
+      <div class="field-group">
+        <div class="field-row">
+          <div class="field"><label for="fn">First name</label><input id="fn" name="fn" required autocomplete="given-name"></div>
+          <div class="field"><label for="ln">Last name</label><input id="ln" name="ln" required autocomplete="family-name"></div>
+        </div>
+        <div class="field"><label for="em">Email address</label><input id="em" name="em" type="email" required autocomplete="email" placeholder="you@email.com"></div>
+      </div>
+
+      <h2 style="margin-top:30px;">Payment</h2>
+      <p class="sub">This is a demo checkout — no real card is charged.</p>
+      <div class="field-group">
+        <div class="field"><label for="card">Card number</label><input id="card" name="card" inputmode="numeric" placeholder="4242 4242 4242 4242"></div>
+        <div class="field-row">
+          <div class="field"><label for="exp">Expiry</label><input id="exp" name="exp" placeholder="MM / YY"></div>
+          <div class="field"><label for="cvc">CVC</label><input id="cvc" name="cvc" inputmode="numeric" placeholder="123"></div>
+        </div>
+      </div>
+      <div class="pay-note">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Connect this form to your payment provider (Stripe, GHL, etc.) to take live payments. Right now it simulates a successful order.
+      </div>
+    </div>
+
+    <div class="summary" style="position:static;">
+      <h3>Order Summary</h3>
+      <div id="sumItems"></div>
+      <div class="sum-row"><span>Delivery</span><span class="free">Instant &amp; Free</span></div>
+      <div class="sum-row total"><span>Total</span><span class="tabnum" id="sumTotal">£0.00</span></div>
+      <button type="submit" class="btn btn-primary btn-block btn-lg" id="payBtn">Pay &amp; Get Instant Access
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+      <p class="sum-note"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 14-day money-back guarantee</p>
+    </div>
+  </form>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">&copy; <span id="year"></span> FitnessForge. Build muscle. Backed by science.</div>
+  </div>
+</footer>
+
+<script src="assets/shop.js"></script>
+<script>
+(function(){
+  var items = FF.cartProducts();
+  var sumItems = document.getElementById("sumItems");
+  if(!items.length){
+    sumItems.innerHTML = '<p class="muted" style="padding:8px 0;">Your cart is empty. <a href="programs.html" style="color:var(--gold);font-weight:600;">Shop programs</a>.</p>';
+    document.getElementById("payBtn").disabled = true;
+  } else {
+    sumItems.innerHTML = items.map(function(p){
+      return '<div class="sum-row"><span>'+FF.esc(p.name)+'</span><span class="tabnum">'+FF.money(p.price)+'</span></div>';
+    }).join("");
+  }
+  document.getElementById("sumTotal").textContent = FF.money(FF.cartTotal());
+
+  document.getElementById("checkoutForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    var required = ["fn","ln","em"];
+    for(var i=0;i<required.length;i++){
+      var f = document.getElementById(required[i]);
+      if(!f.value.trim()){ f.focus(); return; }
+    }
+    // Save order snapshot for the thank-you page, then clear the cart.
+    var order = { items: FF.cartProducts().map(function(p){ return {name:p.name, price:p.price}; }), total: FF.cartTotal(), name: document.getElementById("fn").value.trim(), email: document.getElementById("em").value.trim() };
+    sessionStorage.setItem("ff_order", JSON.stringify(order));
+    FF.clearCart();
+    location.href = "thank-you.html";
+  });
+})();
+</script>
+</body>
+</html>

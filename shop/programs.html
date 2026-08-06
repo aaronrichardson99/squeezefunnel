@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop Programs — FitnessForge</title>
+<meta name="description" content="Browse FitnessForge programs: the Physique Builder Blueprint, Progressive Overload Masterclass, cookbook and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shop.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo"><span class="logo-mark">FF</span>FitnessForge</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="programs.html" class="active">Shop</a>
+      <a href="index.html#reviews">Reviews</a>
+      <a href="index.html#about">About</a>
+    </nav>
+    <div class="nav-right">
+      <a href="cart.html" class="cart-btn" aria-label="View cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-count">0</span>
+      </a>
+      <button class="nav-burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="menu-backdrop" id="backdrop"></div>
+<nav class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="programs.html">Shop</a>
+  <a href="index.html#reviews">Reviews</a>
+  <a href="index.html#about">About</a>
+  <a href="cart.html">Cart</a>
+</nav>
+
+<main>
+<div class="page-head">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Home</a><span>/</span>Shop</div>
+    <span class="eyebrow">All Programs</span>
+    <h1>Choose Your Program</h1>
+    <p>Science-based training and nutrition programs built to get you real, lasting results.</p>
+  </div>
+</div>
+
+<section style="padding-bottom:40px;">
+  <div class="container">
+    <div class="shop-grid" id="mainGrid"></div>
+  </div>
+</section>
+
+<section style="padding:20px 0 60px;">
+  <div class="container">
+    <div class="section-head reveal" style="margin-bottom:30px;">
+      <span class="eyebrow">Add-Ons &amp; Extras</span>
+      <h2 style="font-size:clamp(24px,4vw,34px);">Boost Your Results</h2>
+      <p>Simple, affordable add-ons that make sticking to the plan even easier.</p>
+    </div>
+    <div class="shop-grid" id="addonGrid"></div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <a href="index.html" class="logo"><span class="logo-mark">FF</span>FitnessForge</a>
+      <nav class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="programs.html">Shop</a>
+        <a href="index.html#reviews">Reviews</a>
+        <a href="index.html#about">About</a>
+        <a href="cart.html">Cart</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">&copy; <span id="year"></span> FitnessForge. Build muscle. Backed by science.</div>
+  </div>
+</footer>
+
+<script src="assets/shop.js"></script>
+<script>
+  FF.renderGrid(document.getElementById("mainGrid"), FF.STORE_ITEMS);
+  FF.renderGrid(document.getElementById("addonGrid"), ["nutrition","mealplan"]);
+</script>
+</body>
+</html>
