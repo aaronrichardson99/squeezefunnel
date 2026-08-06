@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FitnessForge — Build Muscle Faster, Backed By Science</title>
+<meta name="description" content="FitnessForge helps beginner and intermediate lifters build muscle, lose fat and get stronger using training and nutrition principles backed by exercise science.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   FitnessForge — Brand Homepage
+   Navy #0f172a + Gold #f59e0b · Poppins / Inter
+   Mobile-first · reveal-on-scroll · hover-lift · marquee
+   ========================================================= */
+
+:root{
+  --white:#ffffff;
+  --navy:#0f172a;
+  --navy-2:#1e293b;
+  --navy-3:#334155;
+  --navy-soft:rgba(15,23,42,0.06);
+  --grey-50:#f8fafc;
+  --grey-100:#f1f5f9;
+  --grey-200:#e2e8f0;
+  --grey-300:#cbd5e1;
+  --grey-400:#94a3b8;
+  --grey-500:#64748b;
+  --gold:#f59e0b;
+  --gold-soft:rgba(245,158,11,0.12);
+  --success:#16a34a;
+  --shadow-sm:0 1px 3px rgba(15,23,42,0.06);
+  --shadow-md:0 8px 24px rgba(15,23,42,0.08);
+  --shadow-lg:0 16px 40px rgba(15,23,42,0.12);
+  --shadow-xl:0 30px 70px rgba(15,23,42,0.18);
+  --radius-sm:12px;
+  --radius-md:18px;
+  --radius-lg:28px;
+  --radius-full:999px;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+  --container:1180px;
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{
+  margin:0;
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  color:var(--navy);
+  background:var(--grey-50);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:'Poppins',sans-serif;line-height:1.1;margin:0;font-weight:800;}
+p{margin:0;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;}
+input{font-family:inherit;}
+ul{margin:0;padding:0;list-style:none;}
+
+.container{width:100%;max-width:var(--container);margin:0 auto;padding:0 20px;}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:14px 26px;border-radius:var(--radius-full);
+  font-weight:700;font-size:15px;letter-spacing:.2px;
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease),background .3s var(--ease);
+  white-space:nowrap;
+}
+.btn svg{transition:transform .4s var(--ease);}
+.btn-primary{background:var(--gold);color:var(--navy);box-shadow:0 10px 24px rgba(245,158,11,.35);}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(245,158,11,.5);}
+.btn-primary:hover svg{transform:translateX(4px);}
+.btn-dark{background:var(--navy);color:#fff;box-shadow:var(--shadow-md);}
+.btn-dark:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);}
+.btn-dark:hover svg{transform:translateX(4px);}
+.btn-ghost{background:transparent;color:var(--navy);border:1.5px solid var(--grey-300);}
+.btn-ghost:hover{border-color:var(--navy);transform:translateY(-3px);}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 15px;border-radius:var(--radius-full);
+  background:var(--gold-soft);color:#b45309;
+  font-size:12.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;
+}
+.eyebrow svg{color:var(--gold);}
+
+.section{padding:84px 0;}
+.section-head{max-width:640px;margin:0 auto 52px;text-align:center;}
+.section-head .eyebrow{margin-bottom:18px;}
+.section-head h2{font-size:clamp(28px,5vw,44px);margin-bottom:16px;letter-spacing:-.5px;}
+.section-head p{color:var(--grey-500);font-size:clamp(15px,2.2vw,18px);}
+.highlight{color:var(--gold);}
+
+/* ---------- Reveal on scroll ---------- */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.reveal.is-visible{opacity:1;transform:none;}
+
+/* =========================================================
+   NAV
+   ========================================================= */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  transition:background .4s var(--ease),box-shadow .4s var(--ease),padding .4s var(--ease);
+  padding:20px 0;
+}
+.nav.scrolled{background:rgba(248,250,252,.85);backdrop-filter:blur(14px);box-shadow:var(--shadow-sm);padding:12px 0;}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Poppins',sans-serif;font-weight:800;font-size:20px;color:var(--navy);}
+.logo-mark{
+  width:36px;height:36px;border-radius:11px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--navy),var(--navy-3));color:var(--gold);
+  font-size:15px;font-weight:800;box-shadow:var(--shadow-sm);
+}
+.nav-links{display:none;align-items:center;gap:30px;}
+.nav-links a{position:relative;font-weight:600;font-size:15px;color:var(--navy-3);padding:4px 0;}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--gold);transition:width .35s var(--ease);}
+.nav-links a:hover{color:var(--navy);}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{display:none;}
+.nav-burger{
+  display:inline-flex;flex-direction:column;gap:5px;padding:10px;border-radius:10px;
+  background:var(--white);box-shadow:var(--shadow-sm);
+}
+.nav-burger span{width:22px;height:2.5px;background:var(--navy);border-radius:2px;transition:transform .35s var(--ease),opacity .3s var(--ease);}
+.nav-burger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
+.nav-burger.open span:nth-child(2){opacity:0;}
+.nav-burger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
+
+.mobile-menu{
+  position:fixed;top:0;right:0;bottom:0;z-index:99;width:min(80vw,320px);
+  background:var(--white);box-shadow:var(--shadow-xl);
+  transform:translateX(100%);transition:transform .45s var(--ease);
+  padding:90px 28px 28px;display:flex;flex-direction:column;gap:6px;
+}
+.mobile-menu.open{transform:translateX(0);}
+.mobile-menu a{padding:14px 8px;font-weight:600;font-size:17px;border-bottom:1px solid var(--grey-100);color:var(--navy-2);}
+.mobile-menu .btn{margin-top:18px;justify-content:center;}
+.menu-backdrop{position:fixed;inset:0;z-index:98;background:rgba(15,23,42,.4);opacity:0;visibility:hidden;transition:opacity .4s var(--ease),visibility .4s;}
+.menu-backdrop.open{opacity:1;visibility:visible;}
+
+@media(min-width:920px){
+  .nav-links{display:flex;}
+  .nav-cta{display:inline-flex;}
+  .nav-burger{display:none;}
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.hero{position:relative;padding:120px 0 72px;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;z-index:0;background:
+  radial-gradient(80% 60% at 80% 0%,rgba(245,158,11,.10),transparent 60%),
+  radial-gradient(70% 60% at 0% 20%,rgba(15,23,42,.05),transparent 55%);}
+.blob{position:absolute;border-radius:50%;filter:blur(60px);z-index:0;}
+.blob-1{width:420px;height:420px;background:var(--gold);opacity:.14;top:-120px;left:-120px;}
+.blob-2{width:380px;height:380px;background:var(--navy-3);opacity:.12;top:80px;right:-160px;}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr;gap:48px;align-items:center;}
+.hero-copy h1{font-size:clamp(34px,7.5vw,60px);letter-spacing:-1px;margin:20px 0 18px;}
+.hero-copy .sub{color:var(--grey-500);font-size:clamp(16px,2.4vw,19px);max-width:540px;margin-bottom:28px;}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:30px;}
+.social-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.avatar-stack{display:flex;}
+.avatar-stack span{
+  width:40px;height:40px;border-radius:50%;margin-left:-12px;border:2.5px solid var(--grey-50);
+  display:grid;place-items:center;font-size:12px;font-weight:700;color:#fff;
+  background:linear-gradient(135deg,var(--navy-2),var(--navy-3));
+}
+.avatar-stack span:first-child{margin-left:0;}
+.social-row p{font-size:14px;color:var(--grey-500);}
+.social-row strong{color:var(--navy);}
+.stars{color:var(--gold);letter-spacing:2px;font-size:15px;}
+
+/* Hero visual — 3D book */
+.hero-visual{display:flex;justify-content:center;perspective:1400px;}
+.book-scene{position:relative;width:min(320px,80vw);}
+.book{
+  position:relative;width:100%;aspect-ratio:3/4;transform-style:preserve-3d;
+  transform:rotateY(-22deg) rotateX(6deg);transition:transform .8s var(--ease);
+  animation:bookFloat 6s ease-in-out infinite;
+}
+.book-scene:hover .book{transform:rotateY(-10deg) rotateX(3deg);}
+.book-page{position:absolute;inset:0;border-radius:6px 16px 16px 6px;}
+.book-page.p3{transform:translateZ(-18px) translateX(12px);background:var(--grey-300);}
+.book-page.p2{transform:translateZ(-12px) translateX(8px);background:var(--grey-200);}
+.book-cover{
+  position:absolute;inset:0;border-radius:6px 16px 16px 6px;color:#fff;padding:30px 26px;
+  display:flex;flex-direction:column;
+  background:linear-gradient(150deg,var(--navy) 0%,var(--navy-2) 55%,var(--navy-3) 100%);
+  box-shadow:var(--shadow-xl);border-left:6px solid rgba(245,158,11,.55);
+}
+.book-cover .tag{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);}
+.book-cover h3{font-size:24px;margin:14px 0;line-height:1.15;}
+.book-divider{width:44px;height:3px;background:var(--gold);border-radius:2px;margin-bottom:14px;}
+.book-cover p{font-size:13px;color:var(--grey-300);line-height:1.5;}
+.book-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--grey-400);}
+.book-foot .logo{font-size:13px;color:#fff;gap:7px;}
+.book-foot .logo-mark{width:24px;height:24px;border-radius:7px;font-size:11px;}
+
+.float-chip{
+  position:absolute;z-index:2;display:inline-flex;align-items:center;gap:7px;
+  padding:10px 15px;border-radius:var(--radius-full);background:#fff;
+  box-shadow:var(--shadow-lg);font-size:13px;font-weight:700;color:var(--navy);
+  animation:chipFloat 5s ease-in-out infinite;
+}
+.float-chip svg{color:var(--success);}
+.chip-1{top:8%;left:-8%;}
+.chip-2{bottom:12%;right:-10%;animation-delay:1.4s;}
+.chip-1 .dot,.stars-chip{color:var(--gold);}
+
+@keyframes bookFloat{0%,100%{translate:0 0;}50%{translate:0 -14px;}}
+@keyframes chipFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+
+/* =========================================================
+   TRUST MARQUEE STRIP
+   ========================================================= */
+.trust-strip{background:var(--navy);padding:20px 0;}
+.marquee-viewport{overflow:hidden;position:relative;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);}
+.trust-track{display:flex;gap:0;width:max-content;animation:scroll-left 26s linear infinite;}
+.trust-track .item{display:inline-flex;align-items:center;gap:10px;padding:0 34px;color:#fff;font-weight:600;font-size:15px;white-space:nowrap;}
+.trust-track .item svg{color:var(--gold);}
+.trust-track .item .sep{color:var(--navy-3);}
+
+/* =========================================================
+   BENEFITS
+   ========================================================= */
+.grid-3{display:grid;grid-template-columns:1fr;gap:22px;}
+@media(min-width:600px){.grid-3{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:920px){.grid-3{grid-template-columns:repeat(3,1fr);}}
+
+.card{
+  background:#fff;border:1px solid var(--grey-200);border-radius:var(--radius-lg);
+  padding:30px 26px;transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .5s var(--ease);
+  position:relative;overflow:hidden;
+}
+.card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);border-color:transparent;}
+.card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease);}
+.card:hover::before{transform:scaleX(1);}
+.benefit-icon{
+  width:56px;height:56px;border-radius:16px;display:grid;place-items:center;margin-bottom:20px;
+  background:var(--navy);color:var(--gold);transition:transform .5s var(--ease),box-shadow .5s var(--ease);
+}
+.card:hover .benefit-icon{transform:scale(1.08) rotate(-4deg);box-shadow:0 10px 24px rgba(245,158,11,.35);}
+.card h3{font-size:20px;margin-bottom:10px;}
+.card p{color:var(--grey-500);font-size:15px;}
+
+/* =========================================================
+   PROGRAMS
+   ========================================================= */
+.programs{background:#fff;}
+.program-card{
+  display:flex;flex-direction:column;background:var(--grey-50);
+  border:1px solid var(--grey-200);border-radius:var(--radius-lg);padding:32px 28px;
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease);
+}
+.program-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);}
+.program-card.featured{background:linear-gradient(160deg,var(--navy),var(--navy-2));color:#fff;border-color:transparent;position:relative;}
+.program-card.featured h3,.program-card.featured .price{color:#fff;}
+.program-card.featured p,.program-card.featured li{color:var(--grey-300);}
+.program-badge{position:absolute;top:20px;right:20px;background:var(--gold);color:var(--navy);font-size:11px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;padding:5px 11px;border-radius:var(--radius-full);}
+.program-card .plan-name{font-size:13px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.program-card h3{font-size:23px;margin-bottom:8px;}
+.program-card .price{font-family:'Poppins',sans-serif;font-weight:800;font-size:34px;margin-bottom:4px;}
+.program-card .price span{font-size:15px;font-weight:600;color:var(--grey-400);}
+.program-card .desc{font-size:14.5px;color:var(--grey-500);margin-bottom:20px;}
+.program-list{display:flex;flex-direction:column;gap:11px;margin-bottom:26px;flex:1;}
+.program-list li{display:flex;align-items:flex-start;gap:10px;font-size:14.5px;color:var(--navy-3);}
+.program-list li svg{flex:none;margin-top:3px;color:var(--success);}
+.program-card.featured .program-list li svg{color:var(--gold);}
+.program-card .btn{justify-content:center;}
+
+/* =========================================================
+   STATS BAND
+   ========================================================= */
+.stats{background:radial-gradient(120% 140% at 50% 0%,var(--navy-2) 0%,var(--navy) 55%,#0b1222 100%);color:#fff;position:relative;overflow:hidden;}
+.stats .blob{width:360px;height:360px;background:#fff;opacity:.05;top:-100px;left:50%;transform:translateX(-50%);}
+.stats-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(2,1fr);gap:36px 20px;text-align:center;}
+@media(min-width:768px){.stats-grid{grid-template-columns:repeat(4,1fr);}}
+.stat .num{font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(34px,6vw,48px);color:var(--gold);line-height:1;}
+.stat .label{margin-top:8px;font-size:14px;color:var(--grey-300);}
+
+/* =========================================================
+   TESTIMONIALS
+   ========================================================= */
+.testimonials{background:var(--grey-50);overflow:hidden;}
+.marquee-row{display:flex;gap:20px;width:max-content;margin-bottom:20px;}
+.marquee-row.r1{animation:scroll-left 42s linear infinite;}
+.marquee-row.r2{animation:scroll-right 46s linear infinite;}
+.testimonials .marquee-viewport:hover .marquee-row{animation-play-state:paused;}
+.testimonials .marquee-viewport:focus-within .marquee-row{animation-play-state:paused;}
+.review-card{
+  flex:none;width:min(340px,82vw);background:#fff;border:1px solid var(--grey-200);
+  border-radius:var(--radius-md);padding:24px;box-shadow:var(--shadow-sm);
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease);
+}
+.review-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);}
+.review-card .stars{margin-bottom:12px;display:block;}
+.review-card .quote{font-size:15px;color:var(--navy-2);line-height:1.55;margin-bottom:18px;}
+.review-person{display:flex;align-items:center;gap:12px;}
+.review-avatar{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--navy-2),var(--navy-3));}
+.review-person strong{display:block;font-size:14.5px;color:var(--navy);}
+.review-person span{font-size:12.5px;color:var(--grey-400);}
+
+@keyframes scroll-left{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@keyframes scroll-right{from{transform:translateX(-50%);}to{transform:translateX(0);}}
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+.about{background:#fff;}
+.about-inner{max-width:760px;margin:0 auto;text-align:center;}
+.about-badge{
+  width:72px;height:72px;border-radius:20px;margin:0 auto 24px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--navy),var(--navy-3));color:var(--gold);
+  font-family:'Poppins',sans-serif;font-weight:800;font-size:26px;box-shadow:var(--shadow-md);
+}
+.about h2{font-size:clamp(26px,4.5vw,40px);margin-bottom:18px;letter-spacing:-.5px;}
+.about p{color:var(--grey-500);font-size:16px;margin-bottom:16px;}
+.cred-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px;}
+.cred-pill{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:var(--radius-full);background:var(--grey-50);border:1px solid var(--grey-200);font-size:13.5px;font-weight:600;color:var(--navy-2);transition:transform .4s var(--ease),border-color .4s var(--ease);}
+.cred-pill:hover{transform:translateY(-3px);border-color:var(--gold);}
+.cred-pill svg{color:var(--gold);}
+
+/* =========================================================
+   FAQ
+   ========================================================= */
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px;}
+.faq-item{background:#fff;border:1px solid var(--grey-200);border-radius:var(--radius-md);overflow:hidden;transition:box-shadow .4s var(--ease),border-color .4s var(--ease);}
+.faq-item.open{box-shadow:var(--shadow-md);border-color:var(--gold);}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 22px;text-align:left;font-family:'Poppins',sans-serif;font-weight:700;font-size:16.5px;color:var(--navy);}
+.faq-toggle{flex:none;width:28px;height:28px;border-radius:50%;background:var(--grey-100);display:grid;place-items:center;position:relative;transition:background .35s var(--ease);}
+.faq-item.open .faq-toggle{background:var(--gold);}
+.faq-toggle::before,.faq-toggle::after{content:"";position:absolute;background:var(--navy);border-radius:2px;transition:transform .35s var(--ease);}
+.faq-toggle::before{width:13px;height:2.5px;}
+.faq-toggle::after{width:2.5px;height:13px;}
+.faq-item.open .faq-toggle::after{transform:scaleY(0);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .45s var(--ease);}
+.faq-a p{padding:0 22px 22px;color:var(--grey-500);font-size:15px;}
+
+/* =========================================================
+   FINAL CTA
+   ========================================================= */
+.final-cta{background:radial-gradient(120% 140% at 50% 0%,var(--navy-2) 0%,var(--navy) 55%,#0b1222 100%);color:#fff;position:relative;overflow:hidden;text-align:center;}
+.final-cta .blob{width:400px;height:400px;background:var(--gold);opacity:.10;top:-120px;left:50%;transform:translateX(-50%);}
+.final-inner{position:relative;z-index:1;max-width:600px;margin:0 auto;}
+.final-cta .eyebrow{margin-bottom:20px;}
+.final-cta h2{font-size:clamp(28px,5vw,44px);margin-bottom:16px;letter-spacing:-.5px;}
+.final-cta p{color:var(--grey-300);font-size:17px;margin-bottom:30px;}
+.cta-form{display:flex;gap:12px;flex-direction:column;max-width:460px;margin:0 auto 16px;}
+@media(min-width:520px){.cta-form{flex-direction:row;}}
+.cta-form .field{flex:1;display:flex;align-items:center;gap:10px;background:#fff;border-radius:var(--radius-full);padding:4px 6px 4px 18px;}
+.cta-form .field svg{color:var(--grey-400);flex:none;}
+.cta-form input{flex:1;border:none;outline:none;padding:12px 0;font-size:15px;color:var(--navy);background:transparent;min-width:0;}
+.cta-form .btn{justify-content:center;}
+.cta-note{font-size:13px;color:var(--grey-400);display:inline-flex;align-items:center;gap:7px;}
+.cta-note svg{color:var(--grey-400);}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.footer{background:#0b1222;color:var(--grey-400);padding:56px 0 30px;}
+.footer-top{display:flex;flex-direction:column;gap:26px;justify-content:space-between;align-items:flex-start;padding-bottom:32px;border-bottom:1px solid var(--navy-2);}
+@media(min-width:768px){.footer-top{flex-direction:row;align-items:center;}}
+.footer .logo{color:#fff;}
+.footer .logo-mark{background:linear-gradient(135deg,var(--gold),#d97706);color:var(--navy);}
+.footer-links{display:flex;flex-wrap:wrap;gap:22px;}
+.footer-links a{font-size:14px;color:var(--grey-400);transition:color .3s var(--ease);}
+.footer-links a:hover{color:var(--gold);}
+.footer-bottom{padding-top:24px;font-size:13px;text-align:center;}
+.footer-bottom a{color:var(--grey-400);}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important;scroll-behavior:auto !important;}
+  .reveal{opacity:1 !important;transform:none !important;}
+  .book{animation:none;transform:rotateY(-16deg) rotateX(4deg);}
+  .trust-track,.marquee-row{animation:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="logo"><span class="logo-mark">FF</span>FitnessForge</a>
+    <nav class="nav-links">
+      <a href="#benefits">Benefits</a>
+      <a href="#programs">Programs</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a href="#start" class="btn btn-primary nav-cta">Get Free Guide
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+    <button class="nav-burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="menu-backdrop" id="backdrop"></div>
+<nav class="mobile-menu" id="mobileMenu">
+  <a href="#benefits">Benefits</a>
+  <a href="#programs">Programs</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#about">About</a>
+  <a href="#faq">FAQ</a>
+  <a href="#start" class="btn btn-primary">Get Free Guide</a>
+</nav>
+
+<span id="top"></span>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="container hero-grid">
+    <div class="hero-copy reveal">
+      <span class="eyebrow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg>
+        Free Science-Based Muscle Guide
+      </span>
+      <h1>Build <span class="highlight">Muscle Faster</span> Without Wasting Months On Bad Advice.</h1>
+      <p class="sub">FitnessForge gives you the training and nutrition system that actually works — so you stop guessing and start seeing real results in the mirror.</p>
+      <div class="hero-actions">
+        <a href="#start" class="btn btn-primary">Get My Free Guide
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#programs" class="btn btn-ghost">See Programs</a>
+      </div>
+      <div class="social-row">
+        <div class="avatar-stack" aria-hidden="true"><span>JM</span><span>ST</span><span>LR</span><span>CB</span></div>
+        <p><span class="stars">★★★★★</span><br><strong>500+</strong> lifters already training smarter</p>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="book-scene">
+        <div class="float-chip chip-1"><span class="stars-chip">★</span> 4.9/5 Rating</div>
+        <div class="float-chip chip-2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Science-Based
+        </div>
+        <div class="book" aria-hidden="true">
+          <div class="book-page p3"></div>
+          <div class="book-page p2"></div>
+          <div class="book-cover">
+            <span class="tag">Free Guide</span>
+            <h3>The Complete Muscle-Building Guide</h3>
+            <div class="book-divider"></div>
+            <p>Your science-based blueprint to build muscle, lose fat &amp; get stronger — beginner friendly.</p>
+            <div class="book-foot">
+              <span class="logo"><span class="logo-mark">FF</span>FitnessForge</span>
+              <span>40+ pages</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST STRIP ============ -->
+<div class="trust-strip">
+  <div class="marquee-viewport">
+    <div class="trust-track" id="trustTrack">
+      <!-- set duplicated in JS for seamless loop -->
+      <span class="item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Evidence-Based Training <span class="sep">•</span></span>
+      <span class="item">★★★★★ 4.9 Average Rating <span class="sep">•</span></span>
+      <span class="item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 500+ Lifters Coached <span class="sep">•</span></span>
+      <span class="item">No Fluff. No Fads. Just Results. <span class="sep">•</span></span>
+      <span class="item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a4 4 0 0 0 4-4V5a4 4 0 0 0-8 0v6a4 4 0 0 0 4 4Z"/><path d="M19 11a7 7 0 0 1-14 0M12 19v3"/></svg> Beginner Friendly <span class="sep">•</span></span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ BENEFITS ============ -->
+<section class="section" id="benefits">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why FitnessForge</span>
+      <h2>Everything You Need To Transform Your Physique</h2>
+      <p>A simple, step-by-step system built for real people — not bodybuilders, not influencers, just you.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card reveal">
+        <div class="benefit-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7v10M18 7v10M2 10v4M22 10v4"/><path d="M6 12h12"/></svg></div>
+        <h3>Build Muscle Faster</h3>
+        <p>Follow a proven training structure designed to maximise muscle growth without wasted gym sessions.</p>
+      </div>
+      <div class="card reveal">
+        <div class="benefit-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></div>
+        <h3>Lose Fat Sustainably</h3>
+        <p>Drop body fat without crash diets — a flexible approach you can actually stick to long term.</p>
+      </div>
+      <div class="card reveal">
+        <div class="benefit-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v6.5L4.5 17a2 2 0 0 0 1.8 3h11.4a2 2 0 0 0 1.8-3L15 8.5V2M9 2h6M9 15h6"/></svg></div>
+        <h3>Science-Based Training</h3>
+        <p>Every recommendation is backed by exercise science — not trends, myths or guesswork.</p>
+      </div>
+      <div class="card reveal">
+        <div class="benefit-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><circle cx="12" cy="13" r="4"/><path d="M12 2v2"/></svg></div>
+        <h3>Simple Nutrition</h3>
+        <p>Understand exactly what to eat without complicated tracking or giving up your favourite foods.</p>
+      </div>
+      <div class="card reveal">
+        <div class="benefit-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-6 3 3 5-8"/></svg></div>
+        <h3>Track Your Progress</h3>
+        <p>Know exactly what to measure so you can see real, visible progress week after week.</p>
+      </div>
+      <div class="card reveal">
+        <div class="benefit-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 8l10 6 10-6-10-6Z"/><path d="m2 14 10 6 10-6"/></svg></div>
+        <h3>Structured Programs</h3>
+        <p>Stop piecing together random workouts — follow a clear plan built to take you from A to B.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROGRAMS ============ -->
+<section class="section programs" id="programs">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Choose Your Path</span>
+      <h2>Programs Built To Get You Results</h2>
+      <p>Whether you're just starting out or ready to go all in, there's a FitnessForge plan for you.</p>
+    </div>
+    <div class="grid-3">
+      <div class="program-card reveal">
+        <span class="plan-name">Start Here</span>
+        <h3>Free Guide</h3>
+        <div class="price">£0</div>
+        <p class="desc">The complete muscle-building guide to get you moving in the right direction today.</p>
+        <ul class="program-list">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 40+ page science-based guide</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Training &amp; nutrition basics</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Beginner-friendly structure</li>
+        </ul>
+        <a href="#start" class="btn btn-ghost">Download Free</a>
+      </div>
+      <div class="program-card featured reveal">
+        <span class="program-badge">Most Popular</span>
+        <span class="plan-name">Go All In</span>
+        <h3>Muscle Blueprint</h3>
+        <div class="price">£49 <span>one-time</span></div>
+        <p class="desc">The full training + nutrition system with everything mapped out for you, week by week.</p>
+        <ul class="program-list">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 12-week structured program</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Full nutrition &amp; macro system</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Progress tracking templates</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Exercise video library</li>
+        </ul>
+        <a href="#start" class="btn btn-primary">Get The Blueprint</a>
+      </div>
+      <div class="program-card reveal">
+        <span class="plan-name">Done With You</span>
+        <h3>1:1 Coaching</h3>
+        <div class="price">£149 <span>/month</span></div>
+        <p class="desc">Personalised programming and direct support to keep you accountable and progressing.</p>
+        <ul class="program-list">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Custom training &amp; nutrition plan</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Weekly check-ins &amp; adjustments</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Direct message support</li>
+        </ul>
+        <a href="#start" class="btn btn-ghost">Apply Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="section stats">
+  <div class="blob" aria-hidden="true"></div>
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat reveal"><div class="num" data-count="500" data-suffix="+">0</div><div class="label">Lifters Coached</div></div>
+      <div class="stat reveal"><div class="num" data-count="4.9" data-decimals="1">0</div><div class="label">Average Rating</div></div>
+      <div class="stat reveal"><div class="num" data-count="40" data-suffix="+">0</div><div class="label">Pages Of Guidance</div></div>
+      <div class="stat reveal"><div class="num" data-count="100" data-suffix="%">0</div><div class="label">Evidence-Based</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section testimonials" id="reviews">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Real Results</span>
+      <h2>Loved By Thousands Of Lifters</h2>
+      <p>Hover to pause and read — these are real transformations from the FitnessForge community.</p>
+    </div>
+  </div>
+  <div class="marquee-viewport" tabindex="0" aria-label="Customer testimonials">
+    <div class="marquee-row r1" id="reviewRow1">
+      <article class="review-card"><span class="stars">★★★★★</span><p class="quote">"I finally stopped guessing in the gym. The guide completely changed how I train."</p><div class="review-person"><span class="review-avatar">JM</span><div><strong>James M.</strong><span>Beginner lifter</span></div></div></article>
+      <article class="review-card"><span class="stars">★★★★★</span><p class="quote">"The most straightforward fitness guide I've ever read. No fluff, just what works."</p><div class="review-person"><span class="review-avatar">ST</span><div><strong>Sarah T.</strong><span>Intermediate lifter</span></div></div></article>
+      <article class="review-card"><span class="stars">★★★★★</span><p class="quote">"I've gained 6kg and feel stronger than ever. Progressive overload finally makes sense."</p><div class="review-person"><span class="review-avatar">LR</span><div><strong>Luke R.</strong><span>Beginner lifter</span></div></div></article>
+      <article class="review-card"><span class="stars">★★★★★</span><p class="quote">"Simple, science-based and easy to follow. Exactly the system I needed to get started."</p><div class="review-person"><span class="review-avatar">CB</span><div><strong>Chloe B.</strong><span>Beginner lifter</span></div></div></article>
+    </div>
+    <div class="marquee-row r2" id="reviewRow2">
+      <article class="review-card"><span class="stars">★★★★★</span><p class="quote">"Finally lost the fat I'd been carrying for years without giving up my favourite foods."</p><div class="review-person"><span class="review-avatar">DK</span><div><strong>Daniel K.</strong><span>Intermediate lifter</span></div></div></article>
+      <article class="review-card"><span class="stars">★★★★★</span><p class="quote">"This guide is worth paying for and it's completely free. Download it today."</p><div class="review-person"><span class="review-avatar">MP</span><div><strong>Megan P.</strong><span>Beginner lifter</span></div></div></article>
+      <article class="review-card"><span class="stars">★★★★★</span><p class="quote">"The coaching kept me accountable when I would've quit. Best decision I've made."</p><div class="review-person"><span class="review-avatar">AH</span><div><strong>Adam H.</strong><span>Intermediate lifter</span></div></div></article>
+      <article class="review-card"><span class="stars">★★★★★</span><p class="quote">"Clear, honest and it actually works. I recommend FitnessForge to everyone I know."</p><div class="review-person"><span class="review-avatar">NW</span><div><strong>Nina W.</strong><span>Beginner lifter</span></div></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section about" id="about">
+  <div class="container">
+    <div class="about-inner reveal">
+      <div class="about-badge" aria-hidden="true">FF</div>
+      <h2>Built On Evidence, Not Guesswork</h2>
+      <p>FitnessForge exists to cut through the noise of conflicting fitness advice. We help beginner and intermediate lifters build muscle, lose fat and get stronger using training and nutrition principles backed by exercise science — not trends, fads or influencer opinions.</p>
+      <p>Every guide, program and resource we create is designed to be simple to follow and genuinely effective, so you can stop second-guessing your training and start seeing real, sustainable results.</p>
+      <div class="cred-row">
+        <span class="cred-pill"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v6.5L4.5 17a2 2 0 0 0 1.8 3h11.4a2 2 0 0 0 1.8-3L15 8.5V2"/></svg> Evidence-Based</span>
+        <span class="cred-pill"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Thousands Coached</span>
+        <span class="cred-pill"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a4 4 0 0 0 4-4V5a4 4 0 0 0-8 0v6a4 4 0 0 0 4 4Z"/><path d="M19 11a7 7 0 0 1-14 0M12 19v3"/></svg> Beginner Friendly</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Questions</span>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q">Is the guide really free?<span class="faq-toggle" aria-hidden="true"></span></button>
+        <div class="faq-a"><p>Yes — the complete muscle-building guide is 100% free. Just enter your email and it lands in your inbox within minutes, no strings attached.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Is this suitable for beginners?<span class="faq-toggle" aria-hidden="true"></span></button>
+        <div class="faq-a"><p>Absolutely. Everything is designed to be beginner-friendly and easy to follow, while still being effective for intermediate lifters who want to train smarter.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do I need a gym membership?<span class="faq-toggle" aria-hidden="true"></span></button>
+        <div class="faq-a"><p>A gym makes progressive overload easier, but the principles apply anywhere. Our programs include options for different equipment setups.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What makes FitnessForge different?<span class="faq-toggle" aria-hidden="true"></span></button>
+        <div class="faq-a"><p>We only recommend what's backed by exercise science — no fads, no gimmicks. Simple systems that genuinely work, explained clearly.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can I upgrade later?<span class="faq-toggle" aria-hidden="true"></span></button>
+        <div class="faq-a"><p>Of course. Start with the free guide, and when you're ready for structure, the Muscle Blueprint or 1:1 Coaching are there whenever you want them.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="section final-cta" id="start">
+  <div class="blob" aria-hidden="true"></div>
+  <div class="container final-inner reveal">
+    <span class="eyebrow">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg>
+      Start Today — It's Free
+    </span>
+    <h2>Ready To Build Muscle The Smart Way?</h2>
+    <p>Join 500+ lifters who stopped guessing. Get your free science-based guide now.</p>
+    <form class="cta-form" id="ctaForm" novalidate>
+      <div class="field">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 7 9 6 9-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg>
+        <input type="email" name="email" placeholder="Enter your best email" aria-label="Email address" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Get My Free Guide
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </form>
+    <p class="cta-note">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      We respect your privacy. Unsubscribe anytime.
+    </p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <a href="#top" class="logo"><span class="logo-mark">FF</span>FitnessForge</a>
+      <nav class="footer-links">
+        <a href="#benefits">Benefits</a>
+        <a href="#programs">Programs</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#about">About</a>
+        <a href="#faq">FAQ</a>
+        <a href="#start">Get Free Guide</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      &copy; <span id="year"></span> FitnessForge. Build muscle. Backed by science.
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---- Nav scroll state ---- */
+  var nav = document.getElementById("nav");
+  function onScroll(){ nav.classList.toggle("scrolled", window.scrollY > 20); }
+  onScroll(); window.addEventListener("scroll", onScroll, {passive:true});
+
+  /* ---- Mobile menu ---- */
+  var burger = document.getElementById("burger"),
+      menu = document.getElementById("mobileMenu"),
+      backdrop = document.getElementById("backdrop");
+  function setMenu(open){
+    burger.classList.toggle("open", open);
+    menu.classList.toggle("open", open);
+    backdrop.classList.toggle("open", open);
+    burger.setAttribute("aria-expanded", open);
+    document.body.style.overflow = open ? "hidden" : "";
+  }
+  burger.addEventListener("click", function(){ setMenu(!menu.classList.contains("open")); });
+  backdrop.addEventListener("click", function(){ setMenu(false); });
+  menu.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", function(){ setMenu(false); }); });
+
+  /* ---- Seamless marquee: duplicate content ---- */
+  ["trustTrack","reviewRow1","reviewRow2"].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.innerHTML += el.innerHTML;
+  });
+
+  /* ---- Reveal on scroll ---- */
+  var reveals = document.querySelectorAll(".reveal");
+  if(reduce || !("IntersectionObserver" in window)){
+    reveals.forEach(function(el){ el.classList.add("is-visible"); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var siblings = Array.prototype.slice.call(e.target.parentNode.children).filter(function(c){return c.classList.contains("reveal");});
+          var i = siblings.indexOf(e.target);
+          e.target.style.transitionDelay = (Math.max(0,i)*0.08) + "s";
+          e.target.classList.add("is-visible");
+          io.unobserve(e.target);
+        }
+      });
+    }, {threshold:0.14, rootMargin:"0px 0px -40px 0px"});
+    reveals.forEach(function(el){ io.observe(el); });
+  }
+
+  /* ---- Count-up stats ---- */
+  var counted = false;
+  function runCounts(){
+    if(counted) return; counted = true;
+    document.querySelectorAll(".num[data-count]").forEach(function(el){
+      var target = parseFloat(el.getAttribute("data-count")),
+          decimals = parseInt(el.getAttribute("data-decimals")||"0",10),
+          suffix = el.getAttribute("data-suffix")||"";
+      if(reduce){ el.textContent = target.toFixed(decimals) + suffix; return; }
+      var start = null, dur = 1500;
+      function step(t){
+        if(!start) start = t;
+        var p = Math.min((t-start)/dur, 1);
+        var eased = 1 - Math.pow(1-p, 3);
+        el.textContent = (target*eased).toFixed(decimals) + suffix;
+        if(p < 1) requestAnimationFrame(step);
+        else el.textContent = target.toFixed(decimals) + suffix;
+      }
+      requestAnimationFrame(step);
+    });
+  }
+  var statsSection = document.querySelector(".stats");
+  if(statsSection && "IntersectionObserver" in window && !reduce){
+    var so = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ runCounts(); so.disconnect(); } });
+    }, {threshold:0.4});
+    so.observe(statsSection);
+  } else { runCounts(); }
+
+  /* ---- FAQ accordion ---- */
+  document.querySelectorAll(".faq-item").forEach(function(item){
+    var q = item.querySelector(".faq-q"), a = item.querySelector(".faq-a");
+    q.addEventListener("click", function(){
+      var open = item.classList.contains("open");
+      document.querySelectorAll(".faq-item.open").forEach(function(o){
+        o.classList.remove("open"); o.querySelector(".faq-a").style.maxHeight = null;
+      });
+      if(!open){ item.classList.add("open"); a.style.maxHeight = a.scrollHeight + "px"; }
+    });
+  });
+
+  /* ---- CTA form (demo) ---- */
+  document.querySelectorAll("form").forEach(function(f){
+    f.addEventListener("submit", function(e){
+      e.preventDefault();
+      var input = f.querySelector('input[type="email"]');
+      if(input && input.value && /\S+@\S+\.\S+/.test(input.value)){
+        var btn = f.querySelector('button');
+        if(btn){ btn.textContent = "✓ You're in! Check your inbox."; }
+        input.value = "";
+      } else if(input){ input.focus(); }
+    });
+  });
+
+  /* ---- Year ---- */
+  var y = document.getElementById("year"); if(y) y.textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
