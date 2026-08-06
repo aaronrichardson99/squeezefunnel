@@ -7,7 +7,6 @@
   "use strict";
 
   /* ---------------- Catalog ---------------- */
-  // NOTE: prices for Cookbook & Masterclass are placeholders — tell us the real ones.
   var CATALOG = {
     blueprint: {
       id:"blueprint", name:"Physique Builder Blueprint", price:39.99, compare:99,
@@ -24,7 +23,7 @@
       ]
     },
     masterclass: {
-      id:"masterclass", name:"Progressive Overload Masterclass", price:29.99, compare:59,
+      id:"masterclass", name:"Progressive Overload Masterclass", price:14.99, compare:29.99,
       cover:"masterclass", tag:"Video Masterclass", badge:"New",
       rating:4.9, reviews:64,
       short:"Master the single most important principle for building muscle — how to progress correctly, every week.",
@@ -37,7 +36,7 @@
       ]
     },
     cookbook: {
-      id:"cookbook", name:"The FitnessForge Cookbook", price:19.99, compare:34.99,
+      id:"cookbook", name:"The FitnessForge Cookbook", price:19.99,
       cover:"cookbook", tag:"Recipe Collection", badge:"Popular",
       rating:4.8, reviews:121,
       short:"High-protein meals that actually taste good — simple recipes built to support muscle growth and fat loss.",
