@@ -22,6 +22,20 @@
         "14-day risk-free guarantee"
       ]
     },
+    upperlower: {
+      id:"upperlower", name:"9-Week Upper/Lower Program", price:29.99, compare:59.99,
+      cover:"upperlower", tag:"Training Program", badge:"4-Day Split",
+      rating:4.9, reviews:87,
+      short:"The intermediate upper/lower split that trains every muscle twice a week for faster size and strength. Four sessions a week, nine weeks, every set mapped out.",
+      bullets:[
+        "9-week upper/lower training block",
+        "4 structured sessions every week",
+        "Hits each muscle group twice a week",
+        "Progressive overload mapped week by week",
+        "Exercise swaps for any gym or home setup",
+        "Warm-up, sets, reps & rest all laid out"
+      ]
+    },
     masterclass: {
       id:"masterclass", name:"Progressive Overload Masterclass", price:14.99, compare:29.99,
       cover:"masterclass", tag:"Video Masterclass", badge:"New",
@@ -74,7 +88,7 @@
     }
   };
 
-  var STORE_ITEMS = ["blueprint","masterclass","cookbook"]; // shown on shop page
+  var STORE_ITEMS = ["blueprint","upperlower","masterclass","cookbook"]; // shown on shop page
   var CART_KEY = "ff_cart";
 
   /* ---------------- Cart (localStorage) ---------------- */

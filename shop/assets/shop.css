@@ -135,6 +135,7 @@ main{flex:1;}
 .cover.cookbook{background:linear-gradient(155deg,#3b2f12,#7c5a16 55%,#b45309);}
 .cover.nutrition{background:linear-gradient(155deg,#0b2a1f,#14532d 55%,#166534);}
 .cover.mealplan{background:linear-gradient(155deg,#3a1d0b,#9a3412 55%,#c2410c);}
+.cover.upperlower{background:linear-gradient(155deg,#1e1b4b,#4338ca 55%,#6d28d9);}
 .cover .c-tag{font-size:11px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--gold);}
 .cover.nutrition .c-tag,.cover.mealplan .c-tag,.cover.cookbook .c-tag{color:#fde68a;}
 .cover h3{font-size:clamp(19px,2.2vw,25px);margin:12px 0;line-height:1.14;overflow-wrap:anywhere;hyphens:auto;}
@@ -171,7 +172,7 @@ main{flex:1;}
    ========================================================= */
 .product-detail{display:grid;grid-template-columns:1fr;gap:40px;padding:20px 0 40px;align-items:start;}
 @media(min-width:900px){.product-detail{grid-template-columns:0.9fr 1.1fr;gap:56px;}}
-.pd-media{position:sticky;top:90px;}
+.pd-media{position:static;}
 .pd-media .cover{aspect-ratio:4/5;max-width:420px;margin:0 auto;}
 .pd-info h1{font-size:clamp(26px,4vw,40px);letter-spacing:-.5px;margin:14px 0;text-wrap:balance;}
 .pd-rating{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--grey-500);margin-bottom:18px;}
