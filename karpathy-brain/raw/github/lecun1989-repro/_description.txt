@@ -1,0 +1,1 @@
+Reproducing Yann LeCun 1989 paper "Backpropagation Applied to Handwritten Zip Code Recognition", to my knowledge the earliest real-world application of a neural net trained with backpropagation.

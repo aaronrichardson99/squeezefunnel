@@ -1,0 +1,1 @@
+Support Vector Machine in Javascript (SMO algorithm, supports arbitrary kernels) + GUI demo

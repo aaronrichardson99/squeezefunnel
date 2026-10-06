@@ -1,0 +1,1 @@
+Deep Learning in Javascript. Train Convolutional Neural Networks (or ordinary ones) in your browser.

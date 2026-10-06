@@ -1,0 +1,1 @@
+Persistent dict, backed by sqlite3 and pickle, multithread-safe.

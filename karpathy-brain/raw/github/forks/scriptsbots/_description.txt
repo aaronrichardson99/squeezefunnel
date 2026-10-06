@@ -1,0 +1,1 @@
+ScriptBots is an Open Source Evolutionary Artificial Life Simulation of Predator-Prey dynamics, written by Andrej Karpathy.

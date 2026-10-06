@@ -1,0 +1,1 @@
+AI agents running research on single-GPU nanochat training automatically

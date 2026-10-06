@@ -1,0 +1,1 @@
+A lightweight/pretty visualizer for recent work on a git code base in multiple branches. Helps stay up to date with teams working on one git repo in many branches.

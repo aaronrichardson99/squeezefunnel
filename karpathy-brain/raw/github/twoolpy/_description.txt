@@ -1,0 +1,1 @@
+useful scripts to work with Twitter + Python. Requires the tweepy library.

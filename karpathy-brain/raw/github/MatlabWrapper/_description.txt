@@ -1,0 +1,1 @@
+C++ convenience class to communicate with a Matlab instance. Send matrices back and forth, execute arbitrary Matlab commands, or drop into interactive Matlab session right in the middle of your C++ code.

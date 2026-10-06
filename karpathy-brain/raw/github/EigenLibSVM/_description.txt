@@ -1,0 +1,1 @@
+A wrapper for LibSVM that lets you train SVM's directly on Eigen library matrices in C++

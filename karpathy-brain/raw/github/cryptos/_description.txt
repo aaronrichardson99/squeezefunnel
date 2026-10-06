@@ -1,0 +1,1 @@
+Pure Python from-scratch zero-dependency implementation of Bitcoin for educational purposes

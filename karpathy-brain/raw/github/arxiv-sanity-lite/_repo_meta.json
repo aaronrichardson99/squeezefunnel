@@ -1,0 +1,48 @@
+{
+  "name": "arxiv-sanity-lite",
+  "full_name": "karpathy/arxiv-sanity-lite",
+  "html_url": "https://github.com/karpathy/arxiv-sanity-lite",
+  "fork": false,
+  "description": "arxiv-sanity lite: tag arxiv papers of interest get recommendations of similar papers in a nice UI using SVMs over tfidf feature vectors based on paper abstracts.",
+  "stargazers_count": 1698,
+  "forks_count": 205,
+  "language": "Python",
+  "topics": [
+    "arxiv",
+    "deep-learning",
+    "flask",
+    "machine-learning"
+  ],
+  "archived": false,
+  "created_at": "2021-11-13T04:34:22Z",
+  "updated_at": "2026-10-05T16:50:56Z",
+  "pushed_at": null,
+  "head_commit_date": "2022-02-13T18:30:14-08:00",
+  "default_branch": "master",
+  "cloned_branch": "master",
+  "head_commit_sha": "d7a303b410b0246fbd19087e37f1885f7ca8a9dc",
+  "note": "pushed_at not available: metadata from GitHub search API (minimal output) because the users/{user}/repos endpoint is blocked in this session; head_commit_date is the committer date of the cloned HEAD.",
+  "api_record": {
+    "id": 427569036,
+    "name": "arxiv-sanity-lite",
+    "full_name": "karpathy/arxiv-sanity-lite",
+    "description": "arxiv-sanity lite: tag arxiv papers of interest get recommendations of similar papers in a nice UI using SVMs over tfidf feature vectors based on paper abstracts.",
+    "html_url": "https://github.com/karpathy/arxiv-sanity-lite",
+    "language": "Python",
+    "stargazers_count": 1698,
+    "forks_count": 205,
+    "open_issues_count": 18,
+    "updated_at": "2026-10-05T16:50:56Z",
+    "created_at": "2021-11-13T04:34:22Z",
+    "topics": [
+      "arxiv",
+      "deep-learning",
+      "flask",
+      "machine-learning"
+    ],
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "default_branch": "master"
+  }
+}

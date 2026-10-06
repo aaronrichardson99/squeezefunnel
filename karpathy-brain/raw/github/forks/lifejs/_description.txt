@@ -1,0 +1,1 @@
+Artificial Life simulator using canvas. Based on https://github.com/karpathy/scriptsbots

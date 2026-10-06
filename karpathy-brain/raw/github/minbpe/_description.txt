@@ -1,0 +1,1 @@
+Minimal, clean code for the Byte Pair Encoding (BPE) algorithm commonly used in LLM tokenization.

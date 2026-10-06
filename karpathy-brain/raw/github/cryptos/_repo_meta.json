@@ -1,0 +1,48 @@
+{
+  "name": "cryptos",
+  "full_name": "karpathy/cryptos",
+  "html_url": "https://github.com/karpathy/cryptos",
+  "fork": false,
+  "description": "Pure Python from-scratch zero-dependency implementation of Bitcoin for educational purposes",
+  "stargazers_count": 1930,
+  "forks_count": 330,
+  "language": "Jupyter Notebook",
+  "topics": [
+    "bitcoin",
+    "crypto",
+    "cryptocurrency",
+    "elliptic-curves"
+  ],
+  "archived": false,
+  "created_at": "2021-04-25T00:56:19Z",
+  "updated_at": "2026-10-05T08:56:58Z",
+  "pushed_at": null,
+  "head_commit_date": "2021-06-20T21:53:07-07:00",
+  "default_branch": "main",
+  "cloned_branch": "main",
+  "head_commit_sha": "e59d4ca9a77da7459e0e792e9a3a82882c41a11d",
+  "note": "pushed_at not available: metadata from GitHub search API (minimal output) because the users/{user}/repos endpoint is blocked in this session; head_commit_date is the committer date of the cloned HEAD.",
+  "api_record": {
+    "id": 361299026,
+    "name": "cryptos",
+    "full_name": "karpathy/cryptos",
+    "description": "Pure Python from-scratch zero-dependency implementation of Bitcoin for educational purposes",
+    "html_url": "https://github.com/karpathy/cryptos",
+    "language": "Jupyter Notebook",
+    "stargazers_count": 1930,
+    "forks_count": 330,
+    "open_issues_count": 4,
+    "updated_at": "2026-10-05T08:56:58Z",
+    "created_at": "2021-04-25T00:56:19Z",
+    "topics": [
+      "bitcoin",
+      "crypto",
+      "cryptocurrency",
+      "elliptic-curves"
+    ],
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "default_branch": "main"
+  }
+}
